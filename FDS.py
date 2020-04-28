@@ -38,7 +38,7 @@ def frecuencias():
     cuentarep = collections.Counter(data) #this will sort data by how many times it appears in the data collection
     print (cuentarep)
     range_iterval(data)
-    
+    print("-------")
 
 if __name__ == "__main__":
     frecuencias()
