@@ -3,12 +3,22 @@
 
 import collections
 
-def range(list):
+def range_iterval(list):
     i_range = max(list) - min(list)
     print (i_range)
     def interval(num):
-        i_interval = i_range // 2
-        print (i_interval)
+        poss_inter = []
+        inter_lst = []
+        for i in range(1,(int(i_range))): #NEEDS REVISION    
+             for x in range (8,19):
+                poss_inter.append(x)
+
+             if i_range / i in poss_inter:
+                 i_interval = i_range / i 
+                 inter_lst.append(i_interval)
+
+
+        print (inter_lst)
     interval(i_range)
     
 
@@ -27,7 +37,7 @@ def frecuencias():
     print("Amount of data: ", counter)
     cuentarep = collections.Counter(data) #this will sort data by how many times it appears in the data collection
     print (cuentarep)
-    range(data)
+    range_iterval(data)
     
 
 if __name__ == "__main__":
