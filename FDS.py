@@ -3,8 +3,8 @@
 
 import collections
 
-
-    
+import Myapp.interval
+from Myapp.interval import range_iterval
 
 def frecuencias():
     data = []
