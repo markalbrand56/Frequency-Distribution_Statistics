@@ -2,9 +2,7 @@
 #_*_ coding: utf8 _*_
 
 import collections
-
-import Myapp.interval
-from Myapp.interval import range_iterval
+from s_package.interval import finterval
 
 def frecuencias():
     data = []
@@ -17,11 +15,18 @@ def frecuencias():
             counter += 1
             data.append(var)
     data = sorted(data)
-    print (data)
+    countrep = collections.Counter(data) #this will sort data by how many times it appears in the data collection
+    i_range = max(data) - min(data)
+    min_inter = int(input("How many intervals do you at least need? "))
+    max_inter = int(input("How many intervals is your max? "))
+    intervals = finterval(i_range,min_inter,max_inter)
+    if intervals == 0:
+        print("An error ocurred while calculating intervals...")
+    print("-------")
+    print ("Sorted data: ", data)
     print("Amount of data: ", counter)
-    cuentarep = collections.Counter(data) #this will sort data by how many times it appears in the data collection
-    print (cuentarep)
-    range_iterval(data)
+    print ("Data, and how many times they repeat: ",countrep)
+    print("Possible intervals: ",intervals)
     print("-------")
 
 if __name__ == "__main__":
