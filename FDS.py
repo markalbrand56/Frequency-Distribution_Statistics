@@ -19,14 +19,16 @@ def frecuencias():
     i_range = max(data) - min(data)
     min_inter = int(input("How many intervals do you at least need? "))
     max_inter = int(input("How many intervals is your max? "))
+    max_inter += 1
     intervals = finterval(i_range,min_inter,max_inter)
-    if intervals == 0:
-        print("An error ocurred while calculating intervals...")
-    print("-------")
+    print("\n-------")
     print ("Sorted data: ", data)
     print("Amount of data: ", counter)
     print ("Data, and how many times they repeat: ",countrep)
-    print("Possible intervals: ",intervals)
+    if intervals == 0:
+        print("An error ocurred while calculating intervals...")
+    else:
+        print("Possible intervals: ",intervals)
     print("-------")
 
 if __name__ == "__main__":
