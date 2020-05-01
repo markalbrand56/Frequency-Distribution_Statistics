@@ -3,7 +3,7 @@
 
 import collections
 from s_package.interval import finterval
-from s_package.c_intervals import limits
+from s_package.m_limits import limits
 
 def frecuencias():
     data = []
@@ -33,11 +33,10 @@ def frecuencias():
     else:
         print("Possible intervals: ",intervals)
     print("-------")
-    d_interval = intervals[0]
-
-
+    d_interval = intervals[0] #NEEDS TO BE ABLE TO CHOOSE
     f_limits = limits(min_data,max_data,d_interval)
     print(f_limits)
-
+    
+    
 if __name__ == "__main__":
     frecuencias()
