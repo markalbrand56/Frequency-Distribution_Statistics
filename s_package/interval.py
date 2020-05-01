@@ -8,7 +8,7 @@ def finterval(rang,min=8,max=19):
     for i in range(1,(int(rang))):   
         if rang / i in poss_inter:
             i_interval = rang / i 
-            inter_lst.append(i_interval)
+            inter_lst.append((i_interval,i)) ## i
     #print(poss_inter) #testing
     #print(inter_lst) #testing
     if len(inter_lst) == 0:
@@ -17,7 +17,7 @@ def finterval(rang,min=8,max=19):
         return inter_lst
 
 
-#print(finterval(23)) #testing
+print(finterval(24)) #testing
 
 
     

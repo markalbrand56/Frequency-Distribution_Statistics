@@ -1,12 +1,17 @@
-def limits(min,max,cls):
-    i = cls - 1
+def limits(min,max,clsi):
+    i = clsi - 1
     l_lst = []
-    for x in range(int(min),int(max)):
-        t_lim = (min,min + i)
-        l_lst.append(t_lim)
-        min += i
+    min -=1 
+    for x in range((int(min)),int(max)):
+        if min >= max:
+            break
+        else:
+            min += 1
+            t_lim = (min,min + i)
+            l_lst.append(t_lim)
+            min += i
     return (l_lst)
 
-#print(limits(1,10,3)) #TESTING
+#print(limits(1,24,12)) #TESTING
     
 
