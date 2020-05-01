@@ -17,7 +17,7 @@ def finterval(rang,min=8,max=19):
         return inter_lst
 
 
-print(finterval(24)) #testing
+#print(finterval(24)) #testing
 
 
     
