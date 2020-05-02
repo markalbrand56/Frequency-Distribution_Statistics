@@ -8,6 +8,7 @@ from s_package.m_limits import limits
 def frecuencias():
     data = []
     counter = 0
+    print("\nInstructions:\nEnter one number at a time.\nWhen you finish, enter '0' to move to the next step\n")
     while True:
         var = float(input("Enter a number: "))
         if var == 0.0:
