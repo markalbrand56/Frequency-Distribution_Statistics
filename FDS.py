@@ -10,7 +10,7 @@ def frecuencias():
     counter = 0
     print("\nInstructions:\nEnter one number at a time.\nWhen you finish, enter '0' to move to the next step\n")
     while True:
-        var = float(input("Enter a number: "))
+        var = float(input("  Enter a number: "))
         if var == 0.0:
             break #0 is for finishing the input process
         else:
@@ -21,39 +21,49 @@ def frecuencias():
     max_data = max(data)
     min_data = min(data)
     i_range = max_data - min_data
-    min_inter = int(input("How many intervals do you at least need? "))
-    max_inter = int(input("How many intervals is your max? "))
+    min_inter = int(input("  How many intervals do you at least need? "))
+    max_inter = int(input("  How many intervals is your max? "))
     max_inter += 1
-    intervals = finterval(i_range,min_inter,max_inter)
+    p_group_sizes = finterval(i_range,min_inter,max_inter)
     
-    print("\n-------")
+    print("\n-------------------------------------------------------")
     print ("Sorted data: ", data)
     print("Amount of data: ", counter)
     print ("Data, and how many times they repeat: ",countrep)
-    if intervals == 0:
+    print("Range: ", i_range)
+    print("-------------------------------------------------------")
+    if p_group_sizes == 0:
         print("An error ocurred while calculating intervals...")
     else:
-        print("Possible intervals: ",intervals)
+        for i in range(len(p_group_sizes)):
+            print("\n",i+1,". Possible group size ",p_group_sizes[i][0],"  This was {} divided by".format(i_range), p_group_sizes[i][1])
     print("-------")
     
-    chs_interval = int(input("Choose an interval: "))
+    chs_interval = int(input("  Choose a group size: "))
     chs_interval -= 1
-    if intervals[chs_interval]:
+    if p_group_sizes[chs_interval]:
         pass
     else:
         print("Try again")
     
-    d_interval = intervals[chs_interval][0] #NEEDS TO BE ABLE TO CHOOSE
-    class_int = intervals[chs_interval][1]
-    print("   Class interval:", class_int)
+    chosen_group_size = p_group_sizes[chs_interval][0] #NEEDS TO BE ABLE TO CHOOSE
+    class_int = int(p_group_sizes[chs_interval][1])-1
+    print("Group's width: ", class_int)
     
     f_limits = limits(min=min_data,max=max_data,clsi=class_int)
-    print(f_limits)
-    if len(f_limits) == d_interval:
+    print("Your intervals are:\n ")
+    for x in f_limits:
+        print (" ", x)
+    if len(f_limits) == chosen_group_size:
         pass
+    elif len(f_limits) > chosen_group_size:
+        print("  \nThe groups created were more than the group size you chose by", int(len(f_limits))-int(chosen_group_size)) #Not always an error
     else:
-        print("The rows created were not equal to your interval ") #Not always an error
-    
+        print("  \nThe groups created were less than the group size you chose by", int(chosen_group_size)-int(len(f_limits)))
 
 if __name__ == "__main__":
-    frecuencias()
+    try:
+        frecuencias()
+    except KeyboardInterrupt:
+        print("Exiting...\n")
+        exit
