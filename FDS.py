@@ -23,17 +23,17 @@ def frecuencias():
         max_data = max(data)
         min_data = min(data)
         i_range = max_data - min_data
-        min_inter = int(input("  How many intervals do you at least need? "))
-        max_inter = int(input("  How many intervals is your max? "))
+        min_inter = int(input("  How many classes/groups do you at least need? "))
+        max_inter = int(input("  How many classes/groups is your max? "))
         max_inter += 1
         p_group_sizes = finterval(i_range,min_inter,max_inter)
         
-        print("\n-------------------------------------------------------")
+        print("\n-----------------------------------------------------------------")
         print ("Sorted data: ", data)
         print("Amount of data: ", counter)
         print ("Data, and how many times they repeat: ",countrep)
         print("Range: ", i_range)
-        print("-------------------------------------------------------")
+        print("-----------------------------------------------------------------")
         if p_group_sizes == 0:
             print("An error ocurred while calculating intervals...")
         else:
@@ -71,7 +71,7 @@ def frecuencias():
             else:
                 print("Ok, when you're ready exit by pressing 'CTRL'+'C' ")
                 while True:
-                    xax = 1
+                    pass
 
 
 if __name__ == "__main__":
