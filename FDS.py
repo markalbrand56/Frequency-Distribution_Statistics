@@ -3,6 +3,7 @@
 
 from s_package.interval import finterval
 from s_package.m_limits import limits
+from s_package.reg_freq import frequency
 
 import collections
 
@@ -27,7 +28,7 @@ def frecuencias():
             print("\nEnter more than one number, please. Try again.")
             print("Exiting...")
             break
-        countrep = collections.Counter(data) #this will sort data by how many times it appears in the data collection
+        ##reg_freq = collections.Counter(data) #this will sort data by how many times it appears in the data collection
         max_data = max(data)
         min_data = min(data)
         i_range = max_data - min_data
@@ -39,8 +40,9 @@ def frecuencias():
         print("\n-----------------------------------------------------------------")
         print ("Sorted data: ", data)
         print("Amount of data: ", counter)
-        print ("Data, and how many times they repeat: ",countrep)
-        print("Range: ", i_range)
+        frequency(data)
+        ##rint ("Data, and how many times they repeat: ",reg_freq)
+        print("\nRange: ", i_range)
         print("-----------------------------------------------------------------")
         if p_group_sizes == 0:
             print("An error ocurred while calculating intervals...")
@@ -86,5 +88,5 @@ if __name__ == "__main__":
     try:
         frecuencias()
     except KeyboardInterrupt:
-        print("Exiting...\n")
+        print("\nExiting...\n")
         exit
