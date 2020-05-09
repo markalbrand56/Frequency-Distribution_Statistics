@@ -37,7 +37,7 @@ def frecuencias():
         max_inter += 1
         p_group_sizes = finterval(i_range,min_inter,max_inter)
         
-        print("\n-----------------------------------------------------------------")
+        print("\n\n\n\n-----------------------------------------------------------------")
         print ("Sorted data: ", data)
         print("Amount of data: ", counter)
         frequency(data)
@@ -46,6 +46,7 @@ def frecuencias():
         print("-----------------------------------------------------------------")
         if p_group_sizes == 0:
             print("An error ocurred while calculating intervals...")
+            exit()
         else:
             for i in range(len(p_group_sizes)):
                 print("\n",i+1,". Possible group size: {} groups".format(p_group_sizes[i][0]),"  This was {} divided by".format(i_range), p_group_sizes[i][1])
