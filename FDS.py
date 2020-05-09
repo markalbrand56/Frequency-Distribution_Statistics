@@ -63,7 +63,7 @@ def frecuencias():
         class_int = int(p_group_sizes[chs_interval][1])-1
         print("Group's width: ", class_int)
         
-        f_limits = limits(min=min_data,max=max_data,clsi=class_int)
+        f_limits = limits(min=min_data,max=max_data,clsi=class_int) #returns list with the limits
         print("Your intervals are:\n ")
         for x in f_limits:
             print (" ", x)
