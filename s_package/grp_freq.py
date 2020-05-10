@@ -19,5 +19,5 @@ def group_frequencies(limits, data):
     return lst_gr_freq
 
 
-print (group_frequencies(test, test1))
+#print (group_frequencies(test, test1))
 

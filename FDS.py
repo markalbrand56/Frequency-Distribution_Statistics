@@ -4,6 +4,7 @@
 from s_package.interval import finterval
 from s_package.m_limits import limits
 from s_package.reg_freq import frequency
+from s_package.grp_freq import group_frequencies
 
 import collections
 
@@ -40,9 +41,9 @@ def frecuencias():
         print("\n\n\n\n-----------------------------------------------------------------")
         print ("Sorted data: ", data)
         print("Amount of data: ", counter)
+        print("\nRange: ", i_range)
         frequency(data)
         ##rint ("Data, and how many times they repeat: ",reg_freq)
-        print("\nRange: ", i_range)
         print("-----------------------------------------------------------------")
         if p_group_sizes == 0:
             print("An error ocurred while calculating intervals...")
@@ -61,13 +62,22 @@ def frecuencias():
         
         chosen_group_size = p_group_sizes[chs_interval][0] #Options to choose
         class_int = int(p_group_sizes[chs_interval][1])-1
-        print("Group's width: ", class_int)
+        print("Group's width: ", class_int, "\n")
         
         f_limits = limits(min=min_data,max=max_data,clsi=class_int) #returns list with the limits. This has to change to a dict, with the frequency
+        result_gr_f = group_frequencies(f_limits, data)
+        acc_g_f = 0
+        
+        print("Your groups, and their frequencies are:")
+        for freq in result_gr_f:
+            acc_g_f += freq[1]
+            print (freq[0], "  |  ", freq[1], "   |   ", acc_g_f)
+        print ("---------------------------Accumulated frequency: ", acc_g_f)
+        '''
         print("Your intervals are:\n ")
         for limit in f_limits:
             print (" ", limit) #Here will have to appear the frequency por each group
-
+'''
         if len(f_limits) == chosen_group_size:
             pass
         elif len(f_limits) > chosen_group_size:

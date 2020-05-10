@@ -6,7 +6,7 @@ def frequency(list):
     #keys = counter.keys()
     #print(keys)
 
-    print("Value ==> Frequency ==> Accumulated")
+    print("\nValue ==> Frequency ==> Accumulated")
     accumulated = 0
     for key, value in counter.items():
         accumulated += value
