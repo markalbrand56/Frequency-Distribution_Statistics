@@ -1,5 +1,5 @@
 #!/usr/bin/env python3.8
-#_*_ coding: utf8 _*_
+#_*_ coding: "utf-8" _*_
 
 from s_package.interval import finterval
 from s_package.m_limits import limits
@@ -36,7 +36,7 @@ def frecuencias():
         min_inter = int(input("\n  How many classes/groups do you at least need? "))
         max_inter = int(input("  How many classes/groups is your max? "))
         max_inter += 1 #This makes the max number of intervals actually be considered in the range.
-        p_group_sizes = finterval(i_range,min_inter,max_inter) #Possible group sizes
+        p_group_sizes = finterval(i_range,min_inter,max_inter) #Possible group sizes in a list
         
         print("\n\n\n\n-----------------------------------------------------------------")
         print ("Sorted data: ", data)
@@ -52,18 +52,24 @@ def frecuencias():
             for i in range(len(p_group_sizes)):
                 print("\n",i+1,". Possible group size: {} groups".format(p_group_sizes[i][0]),"  This was {} divided by".format(i_range), p_group_sizes[i][1])
         print("-------")
-        
-        chs_interval = int(input("  Choose a group size: ")) #Options to choose the width of the gruops
-        chs_interval -= 1
-        if p_group_sizes[chs_interval]:
-            pass
+
+        if len(p_group_sizes) == 1:
+            chs_interval = 0
         else:
-            print("Try again")
+            chs_interval = int(input("  Choose a group size: ")) #Options to choose the width of the gruops
+            chs_interval -= 1
+            if chs_interval in range (0,len(p_group_sizes)):
+                pass
+            else:
+                print("\n   The option you entered doesn't exist. I assigned the second option.") #Error while working with a width of 1
+                chs_interval = 1
+                pass
+
         
         chosen_group_size = p_group_sizes[chs_interval][0] #Options to choose
         class_int = int(p_group_sizes[chs_interval][1])-1
         print("Group's width: ", class_int, "\n")
-        
+
         f_limits = limits(min=min_data,max=max_data,clsi=class_int) #returns list with the limits.
         result_gr_f = group_frequencies(f_limits, data)
         acc_g_f = 0

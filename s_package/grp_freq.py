@@ -1,23 +1,17 @@
-##({147.0: 3, 123.0: 2, 152.0: 2, 156.0: 2, 159.0: 2, 162.0: 2, 164.0: 2, 184.0: 2, 198.0: 2, 110.0: 1, 132.0: 1, 134.0: 1, 145.0: 1})
-
-
-#test = [(110.0, 116.0), (117.0, 123.0), (124.0, 130.0), (131.0, 137.0), (138.0, 144.0), (145.0, 151.0)]
-#test1 =  [110.0, 123.0, 123.0, 132.0, 134.0, 145.0, 147.0, 147.0, 151.0]
 
 def group_frequencies(limits, data):
     limits = list(limits)
     data = list(data)
-    lst_gr_freq = []
+    lst_gr_freq = [] #Here will be added the limits aside with their respective frequencies. Like [((1,3),5), ((4,6), 7), ((7,9), 2)] From 1-3 are 5 numbers
     for limit in limits:
         gr_freq = 0
-        lower = int(limit[0])
-        upper = int(limit[1]) + 1
+        lower = int(limit[0]) #Lower limit
+        upper = int(limit[1]) + 1 #Upper limit. +1 Needed for ranges
         for num in data:
             if num in range(lower,upper):
-                gr_freq += 1
+                gr_freq += 1 #If the number is contained in the actual limit
         lst_gr_freq.append((limit, gr_freq)) 
     return lst_gr_freq
 
 
-#print (group_frequencies(test, test1))
 
