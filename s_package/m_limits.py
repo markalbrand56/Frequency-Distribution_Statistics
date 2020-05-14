@@ -7,7 +7,7 @@ def limits(min,max,clsi): #Clsi == Class Interval
             break 
         else:
             min += 1
-            t_lim = (min,min + grp_wdth)
+            t_lim = (min, min + grp_wdth+1)
             limits_lst.append(t_lim)
             min += grp_wdth
     return (limits_lst)
