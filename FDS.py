@@ -67,10 +67,10 @@ def frecuencias():
 
         
         chosen_group_size = p_group_sizes[chs_interval][0] #Options to choose
-        class_int = int(p_group_sizes[chs_interval][1])-1
-        print("Group's width: ", class_int, "\n")
+        gr_width = int(p_group_sizes[chs_interval][1])-1 #C
+        print("Group's width: ", gr_width, "\n")
 
-        f_limits = limits(min=min_data,max=max_data,clsi=class_int) #returns list with the limits.
+        f_limits = limits(min=min_data,max=max_data,width=gr_width) #returns list with the limits.
         result_gr_f = group_frequencies(f_limits, data)
         acc_g_f = 0
         

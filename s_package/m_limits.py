@@ -1,5 +1,4 @@
-def limits(min,max,clsi): #Clsi == Class Interval
-    grp_wdth = clsi - 1 #Groups width is Class Interval - 1
+def limits(min,max,width): 
     limits_lst = [] #Limits
     min -=1 
     for x in range((int(min)),int(max)):
@@ -7,9 +6,9 @@ def limits(min,max,clsi): #Clsi == Class Interval
             break 
         else:
             min += 1
-            t_lim = (min, min + grp_wdth+1)
+            t_lim = (min, min + width)
             limits_lst.append(t_lim)
-            min += grp_wdth
+            min += width
     return (limits_lst)
 
 if __name__ == "__main__":
