@@ -12,6 +12,6 @@ def limits(min,max,width):
     return (limits_lst)
 
 if __name__ == "__main__":
-    print(limits(1,24,12)," Testing")
+    print(limits(34,96,7)," Testing")
     
 
