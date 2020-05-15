@@ -9,7 +9,7 @@ from s_package.grp_freq import group_frequencies
 import collections
 
 def frecuencias():
-    data = []
+    data = [] #This holds every raw number introduced by the user
     counter = 0
     print("\nInstructions:\nEnter one number at a time.\nWhen you finish, enter '0' to move to the next step\n")
     tr = True
@@ -33,7 +33,7 @@ def frecuencias():
         max_data = max(data)
         min_data = min(data)
         i_range = max_data - min_data #Range
-        min_inter = int(input("\n  How many classes/groups do you at least need? "))
+        min_inter = int(input("\n  How many classes/groups do you at least need? ")) 
         max_inter = int(input("  How many classes/groups is your max? "))
         max_inter += 1 #This makes the max number of intervals actually be considered in the range.
         p_group_sizes = finterval(i_range,min_inter,max_inter) #Possible group sizes in a list
@@ -45,32 +45,41 @@ def frecuencias():
         frequency(data) #this will sort data by how many times it appears in the data collection
 
         print("-----------------------------------------------------------------")
-        if p_group_sizes == 0:
+        if p_group_sizes == 0: #Exiting because the program can't do any more calculations, but giving the option to wait so the user can see the data that waas already calculated
             print("An error ocurred while calculating intervals...")
-            exit() #Without a possible group size it cannot continue with the calculations
+            while True:
+                exiting = input("   Do you want to exit? y/n ")
+                if exiting == "y" or exiting == "Y":
+                    tr = False
+                    break
+                else:
+                    print("   Ok, when you're ready exit by pressing 'CTRL'+'C' ")
+                    while True:
+                        pass
+            #Without a possible group size it cannot continue with the calculations
         else:
             for i in range(len(p_group_sizes)):
                 print("\n",i+1,". Possible group size: {} groups".format(p_group_sizes[i][0]),"  This was {} divided by".format(i_range), p_group_sizes[i][1])
         print("-------")
 
         if len(p_group_sizes) == 1:
-            chs_interval = 0
+            chs_option = 0 #Chosen ammount of groups. Assigns (number_of_groups, divisor). Divisor is only used before to specify how was calculated the number of groups
         else:
-            chs_interval = int(input("  Choose a group size: ")) #Options to choose the width of the gruops
-            chs_interval -= 1
-            if chs_interval in range (0,len(p_group_sizes)):
+            chs_option = int(input("  Choose a group size: ")) #Options to choose the width of the groups
+            chs_option -= 1 #Match list index
+            if chs_option in range (0,len(p_group_sizes)):
                 pass
             else:
                 print("\n   The option you entered doesn't exist. I assigned the second option.") #Error while working with a width of 1
-                chs_interval = 1
+                chs_option = 1 #The len(p_group_sizes) has to be greater/equeal than 1 for this to be evaluated
                 pass
 
         
-        chosen_group_size = p_group_sizes[chs_interval][0] #Options to choose
-        class_int = int(p_group_sizes[chs_interval][1])-1
-        print("Group's width: ", class_int, "\n")
+        chosen_group_size = p_group_sizes[chs_option][0] #This is the variable for the ammount of groups that should be crated.
+        gr_width = int(p_group_sizes[chs_option][0]) - 1 #This is the number that will be used to create the groups. 
+        print("Group's width: ", chosen_group_size, "\n")
 
-        f_limits = limits(min=min_data,max=max_data,clsi=class_int) #returns list with the limits.
+        f_limits = limits(min=min_data,max=max_data,width=gr_width) #returns list with the limits.
         result_gr_f = group_frequencies(f_limits, data)
         acc_g_f = 0
         
@@ -88,12 +97,12 @@ def frecuencias():
             print("  \nThe groups created were less than the group size you chose by", int(chosen_group_size)-int(len(f_limits))) #Not always an error
 
         while True:
-            exiting = input("Do you want to exit? y/n ")
+            exiting = input("   Do you want to exit? y/n ")
             if exiting == "y" or exiting == "Y":
                 tr = False
                 break
             else:
-                print("Ok, when you're ready exit by pressing 'CTRL'+'C' ")
+                print("   Ok, when you're ready exit by pressing 'CTRL'+'C' ")
                 while True:
                     pass
 
