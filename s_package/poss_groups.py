@@ -1,6 +1,6 @@
-def finterval(rang,min=8,max=19):
-    possible_ammounts_groups = []
-    results = []
+def f_p_groups(rang,min=8,max=19): #Function for possible groups
+    possible_ammounts_groups = [] #This holds every number that could divide the range, to calculate groups' width.
+    results = [] #Holds each possible groups' width alongside with the number of groups it should produce.
     for x in range (min,max):
                 possible_ammounts_groups.append(x)
                 if x in possible_ammounts_groups:
@@ -16,7 +16,7 @@ def finterval(rang,min=8,max=19):
 
 
 if __name__ == "__main__":
-    print(finterval(24), "Test") #testing
+    print(f_p_groups(24), "Test") #testing
 
 
     
