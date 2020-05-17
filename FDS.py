@@ -75,7 +75,7 @@ def frecuencias():
                 pass
 
         
-        chosen_group_size = p_group_sizes[chs_option][0] #This is the variable for the ammount of groups that should be crated.
+        chosen_group_size = p_group_sizes[chs_option][1] #This is the variable for the ammount of groups that should be crated.
         gr_width = int(p_group_sizes[chs_option][0]) - 1 #This is the number that will be used to create the groups. 
         print("\nGroup's width: ", chosen_group_size, "\n")
 
