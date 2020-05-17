@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.8
 #_*_ coding: "utf-8" _*_
 
-from s_package.interval import finterval
+from s_package.poss_groups import f_p_groups
 from s_package.m_limits import limits
 from s_package.reg_freq import frequency
 from s_package.grp_freq import group_frequencies
@@ -36,15 +36,17 @@ def frecuencias():
         min_inter = int(input("\n  How many classes/groups do you at least need? ")) 
         max_inter = int(input("  How many classes/groups is your max? "))
         max_inter += 1 #This makes the max number of intervals actually be considered in the range.
-        p_group_sizes = finterval(i_range,min_inter,max_inter) #Possible group sizes in a list
+        p_group_sizes = f_p_groups(i_range,min_inter,max_inter) #Possible group sizes in a list 
         
         print("\n\n\n\n-----------------------------------------------------------------")
         print ("Sorted data: ", data)
         print("Amount of data: ", counter)
-        print("\nRange: ", i_range)
-        frequency(data) #this will sort data by how many times it appears in the data collection
-
+        print("Range: ", i_range)
+        
         print("-----------------------------------------------------------------")
+        frequency(data) #this will sort data by how many times it appears in the data collection
+        print("\n-----------------------------------------------------------------\n")
+
         if p_group_sizes == 0: #Exiting because the program can't do any more calculations, but giving the option to wait so the user can see the data that waas already calculated
             print("An error ocurred while calculating intervals...")
             while True:
@@ -59,13 +61,13 @@ def frecuencias():
             #Without a possible group size it cannot continue with the calculations
         else:
             for i in range(len(p_group_sizes)):
-                print("\n",i+1,". Possible groups' width: {} ".format(p_group_sizes[i][0]),"  This was {} divided by".format(i_range), p_group_sizes[i][1])
+                print("\n",i+1,". Possible groups' width: {} ".format(p_group_sizes[i][0]),"  This will give you {} groups".format(p_group_sizes[i][1]))
         print("-------")
 
         if len(p_group_sizes) == 1:
             chs_option = 0 #Chosen ammount of groups. Assigns (number_of_groups, divisor). Divisor is only used before to specify how was calculated the number of groups
         else:
-            chs_option = int(input("  Choose a group size: ")) #Options to choose the width of the groups
+            chs_option = int(input("  Choose an option for the groups' size: ")) #Options to choose the width of the groups
             chs_option -= 1 #Match list index
             if chs_option in range (0,len(p_group_sizes)):
                 pass
@@ -75,14 +77,15 @@ def frecuencias():
                 pass
 
         
-        chosen_group_size = p_group_sizes[chs_option][0] #This is the variable for the ammount of groups that should be crated.
+        chosen_group_size = p_group_sizes[chs_option][1] #This is the variable for the ammount of groups that should be crated.
         gr_width = int(p_group_sizes[chs_option][0]) - 1 #This is the number that will be used to create the groups. 
-        print("Group's width: ", chosen_group_size, "\n")
+        print("\nGroup's width: ", chosen_group_size, "\n")
 
-        f_limits = limits(min=min_data,max=max_data,width=gr_width) #returns list with the limits.
+        f_limits = limits(min=min_data,max=max_data,width=gr_width) #returns list with all the limits.
         result_gr_f = group_frequencies(f_limits, data)
         acc_g_f = 0 #Accumulated group's frequency
         
+        print("-----------------------------------------------------------------")
         print("Your groups, and their frequencies are:")
         for freq in result_gr_f:
             acc_g_f += freq[1]
