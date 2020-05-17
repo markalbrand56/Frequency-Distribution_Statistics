@@ -59,7 +59,7 @@ def frecuencias():
             #Without a possible group size it cannot continue with the calculations
         else:
             for i in range(len(p_group_sizes)):
-                print("\n",i+1,". Possible groups' width: {} ".format(p_group_sizes[i][0]),"  This was {} divided by".format(i_range), p_group_sizes[i][1])
+                print("\n",i+1,". Possible groups' width: {} ".format(p_group_sizes[i][0]),"  This will give you {} groups".format(p_group_sizes[i][1]))
         print("-------")
 
         if len(p_group_sizes) == 1:
@@ -77,9 +77,9 @@ def frecuencias():
         
         chosen_group_size = p_group_sizes[chs_option][0] #This is the variable for the ammount of groups that should be crated.
         gr_width = int(p_group_sizes[chs_option][0]) - 1 #This is the number that will be used to create the groups. 
-        print("Group's width: ", chosen_group_size, "\n")
+        print("\nGroup's width: ", chosen_group_size, "\n")
 
-        f_limits = limits(min=min_data,max=max_data,width=gr_width) #returns list with the limits.
+        f_limits = limits(min=min_data,max=max_data,width=gr_width) #returns list with all the limits.
         result_gr_f = group_frequencies(f_limits, data)
         acc_g_f = 0 #Accumulated group's frequency
         
