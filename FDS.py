@@ -11,6 +11,7 @@ import collections
 def frecuencias():
     data = [] #This holds every raw number introduced by the user
     counter = 0
+    print("------------ v0.2.2 ------------")
     print("\nInstructions:\nEnter one number at a time.\nWhen you finish, enter '0' to move to the next step\n")
     tr = True
     while tr:
@@ -78,8 +79,10 @@ def frecuencias():
 
         
         chosen_group_size = p_group_sizes[chs_option][1] #This is the variable for the ammount of groups that should be crated.
+        og_groups_width = int(p_group_sizes[chs_option][0]) #Variable for the untouched width
         gr_width = int(p_group_sizes[chs_option][0]) - 1 #This is the number that will be used to create the groups. 
-        print("\nGroup's width: ", chosen_group_size, "\n")
+        print("\nGroup's width: ", og_groups_width ) #Information for the user
+        print("Ammount of groups:  ", chosen_group_size, "\n")
 
         f_limits = limits(min=min_data,max=max_data,width=gr_width) #returns list with all the limits.
         result_gr_f = group_frequencies(f_limits, data)
