@@ -8,7 +8,7 @@ from s_package.grp_freq import group_frequencies
 
 import collections
 
-def frecuencias():
+def frequency_distributions():
     data = [] #This holds every raw number introduced by the user
     counter = 0
     print("------------ v0.2.2 ------------")
@@ -115,7 +115,7 @@ def frecuencias():
 
 if __name__ == "__main__":
     try:
-        frecuencias()
+        frequency_distributions()
     except KeyboardInterrupt:
         print("\nExiting...\n")
         exit
