@@ -1,28 +1,28 @@
 #!/usr/bin/env python3.8
 #_*_ coding: "utf-8" _*_
 
-from s_package.poss_groups import f_p_groups
+from s_package.poss_groups import f_p_groups #Function for possible groups
 from s_package.m_limits import limits
-from s_package.reg_freq import frequency
+from s_package.reg_freq import simple_frequencies
 from s_package.grp_freq import group_frequencies
 
 import collections
 
-def frecuencias():
+def frequency_distributions():
     data = [] #This holds every raw number introduced by the user
-    counter = 0
+    counter = 0 #Counter for how many numbers the user inputs
     print("------------ v0.2.2 ------------")
     print("\nInstructions:\nEnter one number at a time.\nWhen you finish, enter '0' to move to the next step\n")
-    tr = True
+    tr = True #To end the program when the user is ready.
     while tr:
-        while True:
+        while True: #To keep recieving data from the user
             try:
-                var = float(input("  Enter a number: "))
-                if var == 0.0:
+                num = float(input("  Enter a number: ")) 
+                if num == 0.0:
                     break #0 is for finishing the input process
                 else:
                     counter += 1
-                    data.append(var)
+                    data.append(num)
             except ValueError:
                 print(" Enter a number please.") #Even though this exception is raised, the user can continue to try to enter data
         data = sorted(data)
@@ -37,7 +37,7 @@ def frecuencias():
         min_inter = int(input("\n  How many classes/groups do you at least need? ")) 
         max_inter = int(input("  How many classes/groups is your max? "))
         max_inter += 1 #This makes the max number of intervals actually be considered in the range.
-        p_group_sizes = f_p_groups(i_range,min_inter,max_inter) #Possible group sizes in a list 
+        p_group_sizes = f_p_groups(i_range,min_inter,max_inter) #Possible group sizes in a list of tuples (width, ammount of groups)
         
         print("\n\n\n\n-----------------------------------------------------------------")
         print ("Sorted data: ", data)
@@ -45,7 +45,7 @@ def frecuencias():
         print("Range: ", i_range)
         
         print("-----------------------------------------------------------------")
-        frequency(data) #this will sort data by how many times it appears in the data collection
+        simple_frequencies(data) #this will sort data by how many times it appears in the data collection
         print("\n-----------------------------------------------------------------\n")
 
         if p_group_sizes == 0: #Exiting because the program can't do any more calculations, but giving the option to wait so the user can see the data that waas already calculated
@@ -91,7 +91,7 @@ def frecuencias():
         print("-----------------------------------------------------------------")
         print("Your groups, and their frequencies are:")
         for freq in result_gr_f:
-            acc_g_f += freq[1]
+            acc_g_f += freq[1] #accumulated group's frequency
             print (freq[0], "  |  ", freq[1], "   |   ", acc_g_f)
         print ("---------------------------Accumulated frequency: ", acc_g_f)
     
@@ -115,7 +115,7 @@ def frecuencias():
 
 if __name__ == "__main__":
     try:
-        frecuencias()
+        frequency_distributions()
     except KeyboardInterrupt:
         print("\nExiting...\n")
         exit
