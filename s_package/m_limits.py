@@ -1,3 +1,5 @@
+#Module Limits
+
 def limits(min,max,width): #Minimum value of the data set, maximun value of the data set, and groups' width.
     limits_lst = [] #Limits
     min -=1 
