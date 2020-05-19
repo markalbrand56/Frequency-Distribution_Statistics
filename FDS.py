@@ -91,7 +91,7 @@ def frequency_distributions():
         print("-----------------------------------------------------------------")
         print("Your groups, and their frequencies are:")
         for freq in result_gr_f:
-            acc_g_f += freq[1]
+            acc_g_f += freq[1] #accumulated group's frequency
             print (freq[0], "  |  ", freq[1], "   |   ", acc_g_f)
         print ("---------------------------Accumulated frequency: ", acc_g_f)
     
