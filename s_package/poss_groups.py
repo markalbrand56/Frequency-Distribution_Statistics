@@ -6,7 +6,7 @@ def f_p_groups(rang,min=8,max=19): #Function for possible groups
         possible_ammounts_groups.append(x)
 
     for num_groups in possible_ammounts_groups: 
-        if (rang % num_groups) == 0:
+        if (rang % num_groups) == 0 and (rang/num_groups) != 1:
             groups_width = rang / num_groups 
             results.append((groups_width, num_groups))
         else:
