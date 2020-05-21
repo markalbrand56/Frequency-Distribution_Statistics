@@ -11,7 +11,7 @@ import collections
 def frequency_distributions():
     data = [] #This holds every raw number introduced by the user
     counter = 0 #Counter for how many numbers the user inputs
-    print("------------ v0.2.2 ------------")
+    print("------------ v0.3.0-alpha ------------")
     print("\nInstructions:\nEnter one number at a time.\nWhen you finish, enter '0' to move to the next step\n")
     tr = True #To end the program when the user is ready.
     while tr:
