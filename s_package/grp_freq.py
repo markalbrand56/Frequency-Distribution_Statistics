@@ -14,4 +14,7 @@ def group_frequencies(limits, data):
     return lst_gr_freq
 
 
-
+def class_center(list):
+    for group in list:
+        center = ( int(group[0]) + int(group[1]) ) / 2
+        #Define a way to put the class center to the side of each group.
