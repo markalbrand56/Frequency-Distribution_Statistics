@@ -14,7 +14,9 @@ def group_frequencies(limits, data):
     return lst_gr_freq
 
 
-def class_center(list):
-    for group in list:
-        center = ( int(group[0]) + int(group[1]) ) / 2
-        #Define a way to put the class center to the side of each group.
+def class_center(tupl): #Recieves the tuple of a limit
+    lower_limit = tupl[0]
+    upper_limit= tupl[1]
+    center_ls = (int(lower_limit) + int(upper_limit) ) / 2
+    return center_ls
+

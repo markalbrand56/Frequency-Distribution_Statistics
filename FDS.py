@@ -5,6 +5,7 @@ from s_package.poss_groups import f_p_groups #Function for possible groups
 from s_package.m_limits import limits
 from s_package.reg_freq import simple_frequencies
 from s_package.grp_freq import group_frequencies
+from s_package.grp_freq import class_center
 
 import collections
 
@@ -89,10 +90,13 @@ def frequency_distributions():
         acc_g_f = 0 #Accumulated group's frequency
         
         print("-----------------------------------------------------------------")
-        print("Your groups, and their frequencies are:")
+        print("Your groups, and their frequencies are:\n")
+        print("Groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
         for freq in result_gr_f:
+            center = class_center(freq[0])
+            #Define a variable for the center, and make it an object for the class
             acc_g_f += freq[1] #accumulated group's frequency
-            print (freq[0], "  |  ", freq[1], "   |   ", acc_g_f)
+            print (freq[0], "  |  ", center, "  |  ", freq[1], "   |   ", acc_g_f) #[0] holds the limits, [1] holds the frequency
         print ("---------------------------Accumulated frequency: ", acc_g_f)
     
         if len(f_limits) == chosen_group_size:
