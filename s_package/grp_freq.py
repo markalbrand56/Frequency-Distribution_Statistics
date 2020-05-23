@@ -14,3 +14,11 @@ def group_frequencies(limits, data):
     return lst_gr_freq
 
 
+if __name__ == "__main__":
+    testing_lst = [(1, 3), (4, 6), (7, 9), (10, 12), (13, 15), (16, 18), (19, 21), (22, 24), (25, 27)]
+    testing_data = [1,2,5,5,7,8,8,8,8,9,9,11,13,15,15,16,18,18,18,20,20,22,24,25]
+    results = group_frequencies(testing_lst, testing_data)
+    for result in results:
+        print(result)
+
+
