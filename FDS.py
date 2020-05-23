@@ -5,7 +5,8 @@ from s_package.poss_groups import f_p_groups #Function for possible groups
 from s_package.m_limits import limits
 from s_package.reg_freq import simple_frequencies
 from s_package.grp_freq import group_frequencies
-from s_package.grp_freq import class_center
+from s_package.class_centers_m import class_center
+from s_package.real_groups_m import get_real_groups
 
 import collections
 
@@ -91,7 +92,7 @@ def frequency_distributions():
         
         print("-----------------------------------------------------------------")
         print("Your groups, and their frequencies are:\n")
-        print("Groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
+        print("Real groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
         for freq in result_gr_f:
             center = class_center(freq[0])
             #Define a variable for the center, and make it an object for the class
@@ -105,6 +106,22 @@ def frequency_distributions():
             print("  \nThe groups created were more than the group size you chose by", int(len(f_limits))-int(chosen_group_size)) #Not always an error
         else:
             print("  \nThe groups created were less than the group size you chose by", int(chosen_group_size)-int(len(f_limits))) #Not always an error
+
+        decison_rl_grps = input("Do you want to show the real groups? y/n ")
+        if decison_rl_grps.capitalize() == "Y":
+            real_groups = get_real_groups(f_limits)
+            results_real_g_freq = group_frequencies(real_groups, data)
+            print("-----------------------------------------------------------------")
+            print("Your real groups, and their frequencies are:\n")
+            print("Groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
+            acc_r_g_f = 0
+            for freq in results_real_g_freq:
+                center = class_center(freq[0])
+                #Define a variable for the center, and make it an object for the class
+                acc_r_g_f += freq[1] #accumulated group's frequency
+                print (freq[0], "  |  ", center, "  |  ", freq[1], "   |   ", acc_r_g_f) #[0] holds the limits, [1] holds the frequency
+            print ("---------------------------Accumulated frequency: ", acc_r_g_f)
+            #Need to enter the list withou the frequencies
 
         while True:
             exiting = input("   Do you want to exit? y/n ")
