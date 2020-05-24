@@ -17,7 +17,7 @@ def frequency_distributions():
     print("------------ v0.3.0-alpha ------------")
     data = [] #This holds every raw number introduced by the user
     counter = 0 #Counter for how many numbers the user inputs
-    timer = 0.5 #For the user to see each thing at a time.
+    timer = 0.3 #For the user to see each thing at a time.
     print("\nInstructions:\nEnter one number at a time.\nWhen you finish, enter '0' to move to the next step\n")
     tr = True #To end the program when the user is ready.
     while tr:
@@ -53,7 +53,6 @@ def frequency_distributions():
         print("Amount of data: ", counter)
         print("Range: ", i_range)
         print("-----------------------------------------------------------------")
-        time.sleep(timer)
         simple_frequencies(data) #this will sort data by how many times it appears in the data collection
         print("\n-----------------------------------------------------------------\n")
 
@@ -110,6 +109,7 @@ def frequency_distributions():
             center = class_center(freq[0])
             #Define a variable for the center, and make it an object for the class
             acc_g_f += freq[1] #accumulated group's frequency
+            time.sleep(0.05)
             print (freq[0], "  |  ", center, "  |  ", freq[1], "   |   ", acc_g_f) #[0] holds the limits, [1] holds the frequency
         print ("---------------------------Accumulated frequency: ", acc_g_f)
     
@@ -132,6 +132,7 @@ def frequency_distributions():
                 center = class_center(freq[0])
                 #Define a variable for the center, and make it an object for the class
                 acc_r_g_f += freq[1] #accumulated group's frequency
+                time.sleep(0.05)
                 print (freq[0], "  |  ", center, "  |  ", freq[1], "   |   ", acc_r_g_f) #[0] holds the limits, [1] holds the frequency
             print ("---------------------------Accumulated frequency: ", acc_r_g_f)
             #Need to enter the list withou the frequencies
