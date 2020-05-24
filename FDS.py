@@ -8,6 +8,7 @@ from s_package.grp_freq import group_frequencies
 from s_package.class_centers_m import class_center
 from s_package.real_groups_m import get_real_groups
 from s_package.poss_groups import force_groups #Forcing a group
+from s_package.exiting import Exiting
 
 import collections
 
@@ -23,9 +24,11 @@ def frequency_distributions():
                 num = float(input("  Enter a number: ")) 
                 if num == 0.0:
                     break #0 is for finishing the input process
-                else:
+                elif num > 0:
                     counter += 1
                     data.append(num)
+                else:
+                    pass
             except ValueError:
                 print(" Enter a number please.") #Even though this exception is raised, the user can continue to try to enter data
         data = sorted(data)
@@ -55,8 +58,15 @@ def frequency_distributions():
             print("An error ocurred while calculating intervals...")
             forcing = input(" Do you want to choose a width to force the creation of groups? y/n ")
             if forcing == "y" or forcing == "Y":
-                forced_width = int(input("\nEnter the width you want to use: "))
-                p_group_sizes = force_groups(i_range, forced_width)
+                try:
+                    forced_width = int(input("\nEnter the width you want to use: "))
+                    if forced_width >= 0:
+                        p_group_sizes = force_groups(i_range, forced_width)
+                    else:
+                        print("Invalid width")
+                        Exiting()
+                except ValueError:
+                    print("Enter a number")
             else: 
                 while True:
                     exiting = input("   Do you want to exit? y/n ")
