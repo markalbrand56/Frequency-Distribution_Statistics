@@ -5,13 +5,16 @@ from s_package.poss_groups import f_p_groups #Function for possible groups
 from s_package.m_limits import limits
 from s_package.reg_freq import simple_frequencies
 from s_package.grp_freq import group_frequencies
+from s_package.class_centers_m import class_center
+from s_package.real_groups_m import get_real_groups
+from s_package.poss_groups import force_groups #Forcing a group
 
 import collections
 
 def frequency_distributions():
+    print("------------ v0.3.0-alpha ------------")
     data = [] #This holds every raw number introduced by the user
     counter = 0 #Counter for how many numbers the user inputs
-    print("------------ v0.2.2 ------------")
     print("\nInstructions:\nEnter one number at a time.\nWhen you finish, enter '0' to move to the next step\n")
     tr = True #To end the program when the user is ready.
     while tr:
@@ -50,20 +53,25 @@ def frequency_distributions():
 
         if p_group_sizes == 0: #Exiting because the program can't do any more calculations, but giving the option to wait so the user can see the data that waas already calculated
             print("An error ocurred while calculating intervals...")
-            while True:
-                exiting = input("   Do you want to exit? y/n ")
-                if exiting == "y" or exiting == "Y":
-                    tr = False
-                    break
-                else:
-                    print("   Ok, when you're ready exit by pressing 'CTRL'+'C' ")
-                    while True:
-                        pass
-            #Without a possible group size it cannot continue with the calculations
+            forcing = input(" Do you want to choose a width to force the creation of groups? y/n ")
+            if forcing == "y" or forcing == "Y":
+                forced_width = int(input("\nEnter the width you want to use: "))
+                p_group_sizes = force_groups(i_range, forced_width)
+            else: 
+                while True:
+                    exiting = input("   Do you want to exit? y/n ")
+                    if exiting == "y" or exiting == "Y":
+                        tr = False
+                        break
+                    else:
+                        print("   Ok, when you're ready exit by pressing 'CTRL'+'C' ")
+                        while True:
+                            pass
+                                #Without a possible group size it cannot continue with the calculations
         else:
             for i in range(len(p_group_sizes)):
                 print("\n",i+1,". Possible groups' width: {} ".format(p_group_sizes[i][0]),"  This will give you {} groups".format(p_group_sizes[i][1]))
-        print("-------")
+        print("-----------------------------------------------------------------")
 
         if len(p_group_sizes) == 1:
             chs_option = 0 #Chosen ammount of groups. Assigns (number_of_groups, divisor). Divisor is only used before to specify how was calculated the number of groups
@@ -73,7 +81,7 @@ def frequency_distributions():
             if chs_option in range (0,len(p_group_sizes)):
                 pass
             else:
-                print("\n   The option you entered doesn't exist. I assigned the second option.") #Error while working with a width of 1
+                print("\n   The option you entered doesn't exist. I assigned the second option.")
                 chs_option = 1 #The len(p_group_sizes) has to be greater/equeal than 1 for this to be evaluated
                 pass
 
@@ -89,10 +97,13 @@ def frequency_distributions():
         acc_g_f = 0 #Accumulated group's frequency
         
         print("-----------------------------------------------------------------")
-        print("Your groups, and their frequencies are:")
+        print("Your groups, and their frequencies are:\n")
+        print("Groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
         for freq in result_gr_f:
+            center = class_center(freq[0])
+            #Define a variable for the center, and make it an object for the class
             acc_g_f += freq[1] #accumulated group's frequency
-            print (freq[0], "  |  ", freq[1], "   |   ", acc_g_f)
+            print (freq[0], "  |  ", center, "  |  ", freq[1], "   |   ", acc_g_f) #[0] holds the limits, [1] holds the frequency
         print ("---------------------------Accumulated frequency: ", acc_g_f)
     
         if len(f_limits) == chosen_group_size:
@@ -101,6 +112,22 @@ def frequency_distributions():
             print("  \nThe groups created were more than the group size you chose by", int(len(f_limits))-int(chosen_group_size)) #Not always an error
         else:
             print("  \nThe groups created were less than the group size you chose by", int(chosen_group_size)-int(len(f_limits))) #Not always an error
+
+        decison_rl_grps = input("  Do you want to show the real groups? y/n ")
+        if decison_rl_grps.capitalize() == "Y":
+            real_groups = get_real_groups(f_limits)
+            results_real_g_freq = group_frequencies(real_groups, data)
+            print("-----------------------------------------------------------------")
+            print("Your real groups, and their frequencies are:\n")
+            print("Real groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
+            acc_r_g_f = 0
+            for freq in results_real_g_freq:
+                center = class_center(freq[0])
+                #Define a variable for the center, and make it an object for the class
+                acc_r_g_f += freq[1] #accumulated group's frequency
+                print (freq[0], "  |  ", center, "  |  ", freq[1], "   |   ", acc_r_g_f) #[0] holds the limits, [1] holds the frequency
+            print ("---------------------------Accumulated frequency: ", acc_r_g_f)
+            #Need to enter the list withou the frequencies
 
         while True:
             exiting = input("   Do you want to exit? y/n ")

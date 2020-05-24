@@ -17,9 +17,17 @@ def f_p_groups(rang,min=8,max=19): #Function for possible groups
     else:
         return results
 
+def force_groups(rang, width):
+    results = []
+    num_groups = float(rang / width)
+    num_groups = round(num_groups, 2) #If the user is forcing the creation of groups, there is going to be a decilmal ammount of groups.
+    result = (width, num_groups)
+    results.append(result)
+    return results
 
 if __name__ == "__main__":
     print(f_p_groups(24), "Test") #testing
+    print(force_groups(23,3))
 
 
     
