@@ -12,9 +12,9 @@ from s_package.poss_groups import force_groups #Forcing a group
 import collections
 
 def frequency_distributions():
+    print("------------ v0.3.0-alpha ------------")
     data = [] #This holds every raw number introduced by the user
     counter = 0 #Counter for how many numbers the user inputs
-    print("------------ v0.3.0-alpha ------------")
     print("\nInstructions:\nEnter one number at a time.\nWhen you finish, enter '0' to move to the next step\n")
     tr = True #To end the program when the user is ready.
     while tr:
@@ -55,7 +55,7 @@ def frequency_distributions():
             print("An error ocurred while calculating intervals...")
             forcing = input(" Do you want to choose a width to force the creation of groups? y/n ")
             if forcing == "y" or forcing == "Y":
-                forced_width = int(input("\nEnter a width: "))
+                forced_width = int(input("\nEnter the width you want to use: "))
                 p_group_sizes = force_groups(i_range, forced_width)
             else: 
                 while True:
