@@ -20,6 +20,7 @@ def frequency_distributions():
     timer = 0.1 #For the user to see each thing at a time. Data focused
     timer_groups = 0.05 #Timer for the rows of tables. Faster than data
     print("\nInstructions:\nEnter one number at a time.\nWhen you finish, enter '0' to move to the next step\n")
+    time.sleep(1)
     tr = True #To end the program when the user is ready.
     while tr:
         while True: #To keep recieving data from the user
