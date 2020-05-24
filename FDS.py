@@ -55,7 +55,7 @@ def frequency_distributions():
             print("An error ocurred while calculating intervals...")
             forcing = input(" Do you want to choose a width to force the creation of groups? y/n ")
             if forcing == "y" or forcing == "Y":
-                forced_width = int(input("Enter a width: "))
+                forced_width = int(input("\nEnter a width: "))
                 p_group_sizes = force_groups(i_range, forced_width)
             else: 
                 while True:
@@ -71,7 +71,7 @@ def frequency_distributions():
         else:
             for i in range(len(p_group_sizes)):
                 print("\n",i+1,". Possible groups' width: {} ".format(p_group_sizes[i][0]),"  This will give you {} groups".format(p_group_sizes[i][1]))
-        print("-------")
+        print("-----------------------------------------------------------------")
 
         if len(p_group_sizes) == 1:
             chs_option = 0 #Chosen ammount of groups. Assigns (number_of_groups, divisor). Divisor is only used before to specify how was calculated the number of groups
@@ -81,7 +81,7 @@ def frequency_distributions():
             if chs_option in range (0,len(p_group_sizes)):
                 pass
             else:
-                print("\n   The option you entered doesn't exist. I assigned the second option.") #Error while working with a width of 1
+                print("\n   The option you entered doesn't exist. I assigned the second option.")
                 chs_option = 1 #The len(p_group_sizes) has to be greater/equeal than 1 for this to be evaluated
                 pass
 
@@ -113,7 +113,7 @@ def frequency_distributions():
         else:
             print("  \nThe groups created were less than the group size you chose by", int(chosen_group_size)-int(len(f_limits))) #Not always an error
 
-        decison_rl_grps = input("Do you want to show the real groups? y/n ")
+        decison_rl_grps = input("  Do you want to show the real groups? y/n ")
         if decison_rl_grps.capitalize() == "Y":
             real_groups = get_real_groups(f_limits)
             results_real_g_freq = group_frequencies(real_groups, data)
