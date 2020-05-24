@@ -7,6 +7,7 @@ from s_package.reg_freq import simple_frequencies
 from s_package.grp_freq import group_frequencies
 from s_package.class_centers_m import class_center
 from s_package.real_groups_m import get_real_groups
+from s_package.poss_groups import force_groups #Forcing a group
 
 import collections
 
@@ -52,16 +53,21 @@ def frequency_distributions():
 
         if p_group_sizes == 0: #Exiting because the program can't do any more calculations, but giving the option to wait so the user can see the data that waas already calculated
             print("An error ocurred while calculating intervals...")
-            while True:
-                exiting = input("   Do you want to exit? y/n ")
-                if exiting == "y" or exiting == "Y":
-                    tr = False
-                    break
-                else:
-                    print("   Ok, when you're ready exit by pressing 'CTRL'+'C' ")
-                    while True:
-                        pass
-            #Without a possible group size it cannot continue with the calculations
+            forcing = input(" Do you want to choose a width to force the creation of groups? y/n ")
+            if forcing == "y" or forcing == "Y":
+                forced_width = int(input("Enter a width: "))
+                p_group_sizes = force_groups(i_range, forced_width)
+            else: 
+                while True:
+                    exiting = input("   Do you want to exit? y/n ")
+                    if exiting == "y" or exiting == "Y":
+                        tr = False
+                        break
+                    else:
+                        print("   Ok, when you're ready exit by pressing 'CTRL'+'C' ")
+                        while True:
+                            pass
+                                #Without a possible group size it cannot continue with the calculations
         else:
             for i in range(len(p_group_sizes)):
                 print("\n",i+1,". Possible groups' width: {} ".format(p_group_sizes[i][0]),"  This will give you {} groups".format(p_group_sizes[i][1]))

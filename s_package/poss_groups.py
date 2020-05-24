@@ -17,6 +17,12 @@ def f_p_groups(rang,min=8,max=19): #Function for possible groups
     else:
         return results
 
+def force_groups(rang, width):
+    results = []
+    num_groups = float(rang / width)
+    result = (width, num_groups)
+    results.append(result)
+    return results
 
 if __name__ == "__main__":
     print(f_p_groups(24), "Test") #testing
