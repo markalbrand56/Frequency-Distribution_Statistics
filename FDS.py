@@ -92,7 +92,7 @@ def frequency_distributions():
         
         print("-----------------------------------------------------------------")
         print("Your groups, and their frequencies are:\n")
-        print("Real groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
+        print("Groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
         for freq in result_gr_f:
             center = class_center(freq[0])
             #Define a variable for the center, and make it an object for the class
@@ -113,7 +113,7 @@ def frequency_distributions():
             results_real_g_freq = group_frequencies(real_groups, data)
             print("-----------------------------------------------------------------")
             print("Your real groups, and their frequencies are:\n")
-            print("Groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
+            print("Real groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
             acc_r_g_f = 0
             for freq in results_real_g_freq:
                 center = class_center(freq[0])
