@@ -17,7 +17,7 @@ def frequency_distributions():
     print("------------ v0.3.0-alpha ------------")
     data = [] #This holds every raw number introduced by the user
     counter = 0 #Counter for how many numbers the user inputs
-    timer = 0.3 #For the user to see each thing at a time.
+    timer = 0.5 #For the user to see each thing at a time.
     print("\nInstructions:\nEnter one number at a time.\nWhen you finish, enter '0' to move to the next step\n")
     tr = True #To end the program when the user is ready.
     while tr:
