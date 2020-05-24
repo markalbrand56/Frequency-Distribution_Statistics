@@ -2,12 +2,14 @@ import collections
 
 
 def simple_frequencies(list):
+    import time
     counter = collections.Counter(list) #Counts each appearence of each number. This returns it in the format {(value, count), (value, count)}
 
     print("\nValue ==> Frequency ==> Accumulated") 
     accumulated = 0 #Accumulated frequency
     for key, value in counter.items():
         accumulated += value
+        time.sleep(0.05)
         print("{}   |   {}   |   {}".format(key, value, accumulated)) 
 
 
