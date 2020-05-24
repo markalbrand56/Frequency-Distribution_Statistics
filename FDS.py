@@ -8,13 +8,16 @@ from s_package.grp_freq import group_frequencies
 from s_package.class_centers_m import class_center
 from s_package.real_groups_m import get_real_groups
 from s_package.poss_groups import force_groups #Forcing a group
+from s_package.exiting import Exiting
 
+import time
 import collections
 
 def frequency_distributions():
     print("------------ v0.3.0-alpha ------------")
     data = [] #This holds every raw number introduced by the user
     counter = 0 #Counter for how many numbers the user inputs
+    timer = 0.5 #For the user to see each thing at a time.
     print("\nInstructions:\nEnter one number at a time.\nWhen you finish, enter '0' to move to the next step\n")
     tr = True #To end the program when the user is ready.
     while tr:
@@ -23,9 +26,11 @@ def frequency_distributions():
                 num = float(input("  Enter a number: ")) 
                 if num == 0.0:
                     break #0 is for finishing the input process
-                else:
+                elif num > 0:
                     counter += 1
                     data.append(num)
+                else:
+                    pass #Negative numbers won't be added
             except ValueError:
                 print(" Enter a number please.") #Even though this exception is raised, the user can continue to try to enter data
         data = sorted(data)
@@ -42,11 +47,11 @@ def frequency_distributions():
         max_inter += 1 #This makes the max number of intervals actually be considered in the range.
         p_group_sizes = f_p_groups(i_range,min_inter,max_inter) #Possible group sizes in a list of tuples (width, ammount of groups)
         
+        time.sleep(timer)
         print("\n\n\n\n-----------------------------------------------------------------")
         print ("Sorted data: ", data)
         print("Amount of data: ", counter)
         print("Range: ", i_range)
-        
         print("-----------------------------------------------------------------")
         simple_frequencies(data) #this will sort data by how many times it appears in the data collection
         print("\n-----------------------------------------------------------------\n")
@@ -55,20 +60,20 @@ def frequency_distributions():
             print("An error ocurred while calculating intervals...")
             forcing = input(" Do you want to choose a width to force the creation of groups? y/n ")
             if forcing == "y" or forcing == "Y":
-                forced_width = int(input("\nEnter the width you want to use: "))
-                p_group_sizes = force_groups(i_range, forced_width)
-            else: 
-                while True:
-                    exiting = input("   Do you want to exit? y/n ")
-                    if exiting == "y" or exiting == "Y":
-                        tr = False
-                        break
+                try:
+                    forced_width = int(input("\nEnter the width you want to use: "))
+                    if forced_width >= 0:
+                        p_group_sizes = force_groups(i_range, forced_width)
                     else:
-                        print("   Ok, when you're ready exit by pressing 'CTRL'+'C' ")
-                        while True:
-                            pass
-                                #Without a possible group size it cannot continue with the calculations
+                        print("Invalid width")
+                        Exiting()
+                except ValueError:
+                    print("Enter a number")
+            else: 
+                Exiting() #Without a possible group size it cannot continue with the calculations
+
         else:
+            time.sleep(timer)
             for i in range(len(p_group_sizes)):
                 print("\n",i+1,". Possible groups' width: {} ".format(p_group_sizes[i][0]),"  This will give you {} groups".format(p_group_sizes[i][1]))
         print("-----------------------------------------------------------------")
@@ -96,6 +101,7 @@ def frequency_distributions():
         result_gr_f = group_frequencies(f_limits, data)
         acc_g_f = 0 #Accumulated group's frequency
         
+        time.sleep(timer)
         print("-----------------------------------------------------------------")
         print("Your groups, and their frequencies are:\n")
         print("Groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
@@ -103,6 +109,7 @@ def frequency_distributions():
             center = class_center(freq[0])
             #Define a variable for the center, and make it an object for the class
             acc_g_f += freq[1] #accumulated group's frequency
+            time.sleep(0.05)
             print (freq[0], "  |  ", center, "  |  ", freq[1], "   |   ", acc_g_f) #[0] holds the limits, [1] holds the frequency
         print ("---------------------------Accumulated frequency: ", acc_g_f)
     
@@ -125,19 +132,12 @@ def frequency_distributions():
                 center = class_center(freq[0])
                 #Define a variable for the center, and make it an object for the class
                 acc_r_g_f += freq[1] #accumulated group's frequency
+                time.sleep(0.05)
                 print (freq[0], "  |  ", center, "  |  ", freq[1], "   |   ", acc_r_g_f) #[0] holds the limits, [1] holds the frequency
             print ("---------------------------Accumulated frequency: ", acc_r_g_f)
             #Need to enter the list withou the frequencies
 
-        while True:
-            exiting = input("   Do you want to exit? y/n ")
-            if exiting == "y" or exiting == "Y":
-                tr = False
-                break
-            else:
-                print("   Ok, when you're ready exit by pressing 'CTRL'+'C' ")
-                while True:
-                    pass
+        Exiting()
 
 
 if __name__ == "__main__":
