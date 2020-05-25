@@ -1,14 +1,15 @@
 #!/usr/bin/env python3.8
 #_*_ coding: "utf-8" _*_
 
-from s_package.poss_groups import f_p_groups #Function for possible groups
-from s_package.m_limits import limits
-from s_package.frequencies import simple_frequencies
-from s_package.frequencies import group_frequencies
-from s_package.class_centers_m import class_center
-from s_package.real_groups_m import get_real_groups
-from s_package.poss_groups import force_groups #Forcing a group
+from s_package.poss_groups import Possible_groups #Function for possible groups
+from s_package.m_limits import Limits
+from s_package.frequencies import Simple_frequencies
+from s_package.frequencies import Group_frequencies
+from s_package.class_centers_m import Class_center
+from s_package.real_groups_m import Get_real_groups
+from s_package.poss_groups import Force_groups #Forcing a group
 from s_package.exiting import Exiting
+from s_package.average import Average
 
 import time
 import collections
@@ -44,10 +45,11 @@ def frequency_distributions():
         max_data = max(data)
         min_data = min(data)
         i_range = max_data - min_data #Range
+        average = Average(data, counter)
         min_inter = int(input("\n  How many classes/groups do you at least need? ")) 
         max_inter = int(input("  How many classes/groups is your max? "))
         max_inter += 1 #This makes the max number of intervals actually be considered in the range.
-        p_group_sizes = f_p_groups(i_range,min_inter,max_inter) #Possible group sizes in a list of tuples (width, ammount of groups)
+        p_group_sizes = Possible_groups(i_range,min_inter,max_inter) #Possible group sizes in a list of tuples (width, ammount of groups)
         
         print("\n\n\n\n-----------------------------------------------------------------")
         time.sleep(timer)
@@ -56,9 +58,11 @@ def frequency_distributions():
         print("Amount of data: ", counter)
         time.sleep(timer)
         print("Range: ", i_range)
+        time.sleep(timer)
+        print("Average: ", average)
         print("-----------------------------------------------------------------")
         time.sleep(timer)
-        simple_frequencies(data) #this will sort data by how many times it appears in the data collection
+        Simple_frequencies(data) #this will sort data by how many times it appears in the data collection
         print("\n-----------------------------------------------------------------\n")
 
         if p_group_sizes == 0: #Exiting because the program can't do any more calculations, but giving the option to wait so the user can see the data that was already calculated
@@ -68,7 +72,7 @@ def frequency_distributions():
                 try:
                     forced_width = int(input("\nEnter the width you want to use: "))
                     if forced_width >= 0:
-                        p_group_sizes = force_groups(i_range, forced_width)
+                        p_group_sizes = Force_groups(i_range, forced_width)
                     else:
                         print("Invalid width")
                         Exiting()
@@ -103,8 +107,8 @@ def frequency_distributions():
         print("\nGroup's width: ", og_groups_width ) #Information for the user
         print("Ammount of groups:  ", chosen_group_size, "\n")
 
-        f_limits = limits(min=min_data,max=max_data,width=gr_width) #returns list with all the limits.
-        result_gr_f = group_frequencies(f_limits, data)
+        f_limits = Limits(min=min_data,max=max_data,width=gr_width) #returns list with all the limits.
+        result_gr_f = Group_frequencies(f_limits, data)
         acc_g_f = 0 #Accumulated group's frequency
         
         time.sleep(timer)
@@ -112,7 +116,7 @@ def frequency_distributions():
         print("Your groups, and their frequencies are:\n")
         print("Groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
         for freq in result_gr_f:
-            center = class_center(freq[0])
+            center = Class_center(freq[0])
             #Define a variable for the center, and make it an object for the class
             acc_g_f += freq[1] #accumulated group's frequency
             time.sleep(timer_groups)
@@ -127,15 +131,15 @@ def frequency_distributions():
             print("  \nThe groups created were less than the group size you chose by", int(chosen_group_size)-int(len(f_limits))) #Not always an error
 
         decison_rl_grps = input("  Do you want to show the real groups? y/n ")
-        if decison_rl_grps.capitalize() == "Y":
-            real_groups = get_real_groups(f_limits)
-            results_real_g_freq = group_frequencies(real_groups, data)
+        if decison_rl_grps.upper() == "Y":
+            real_groups = Get_real_groups(f_limits)
+            results_real_g_freq = Group_frequencies(real_groups, data)
             print("-----------------------------------------------------------------")
             print("Your real groups, and their frequencies are:\n")
             print("Real groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
             acc_r_g_f = 0
             for freq in results_real_g_freq:
-                center = class_center(freq[0])
+                center = Class_center(freq[0])
                 #Define a variable for the center, and make it an object for the class
                 acc_r_g_f += freq[1] #accumulated group's frequency
                 time.sleep(timer_groups)

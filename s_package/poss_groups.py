@@ -1,4 +1,4 @@
-def f_p_groups(rang,min=8,max=19): #Function for possible groups
+def Possible_groups(rang,min=8,max=19): #Function for possible groups
     possible_ammounts_groups = [] #This holds every number that could divide the range, to calculate groups' width.
     results = [] #Holds each possible groups' width alongside with the number of groups it should produce.
     
@@ -17,7 +17,7 @@ def f_p_groups(rang,min=8,max=19): #Function for possible groups
     else:
         return results
 
-def force_groups(rang, width):
+def Force_groups(rang, width):
     results = []
     num_groups = float(rang / width)
     num_groups = round(num_groups, 2) #If the user is forcing the creation of groups, there is going to be a decilmal ammount of groups.
@@ -26,8 +26,8 @@ def force_groups(rang, width):
     return results
 
 if __name__ == "__main__":
-    print(f_p_groups(24), "Test") #testing
-    print(force_groups(23,3))
+    print(Possible_groups(24), "Test") #testing
+    print(Force_groups(23,3))
 
 
     

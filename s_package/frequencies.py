@@ -1,7 +1,7 @@
 import collections
 
 
-def simple_frequencies(list):
+def Simple_frequencies(list):
     import time
     counter = collections.Counter(list) #Counts each appearence of each number. This returns it in the format {(value, count), (value, count)}
 
@@ -13,7 +13,7 @@ def simple_frequencies(list):
         print("{}   |   {}   |   {}".format(key, value, accumulated)) 
 
 
-def group_frequencies(limits, data):
+def Group_frequencies(limits, data):
     limits = list(limits)
     data = list(data)
     lst_gr_freq = [] #Here will be added the limits aside with their respective frequencies. Like [((1,3),5), ((4,6), 7), ((7,9), 2)] From 1-3 are 5 numbers
@@ -32,12 +32,12 @@ if __name__ == "__main__":
     testing_data = sorted(testing_data)
     testing_lst = [(1, 3), (4, 6), (7, 9), (10, 12), (13, 15), (16, 18), (19, 21), (22, 24), (25, 27)]
     
-    simple_frequencies(testing_data)
+    Simple_frequencies(testing_data)
     print(len(testing_data))
     
     print("\n")
     
-    results_gr_f = group_frequencies(testing_lst, testing_data)
+    results_gr_f = Group_frequencies(testing_lst, testing_data)
     for result in results_gr_f:
         print(result)
 

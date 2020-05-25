@@ -1,4 +1,4 @@
-def get_real_groups(list):
+def Get_real_groups(list):
     real_groups_lst = []
     difference = 0.5
     for group in list:
@@ -10,4 +10,4 @@ def get_real_groups(list):
 
 if __name__ == "__main__":
     testing = [(1,3),(4,6),(7,9),(10,12)]
-    print(get_real_groups(testing))
+    print(Get_real_groups(testing))
