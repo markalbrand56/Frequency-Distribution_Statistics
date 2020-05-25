@@ -3,8 +3,8 @@
 
 from s_package.poss_groups import f_p_groups #Function for possible groups
 from s_package.m_limits import limits
-from s_package.reg_freq import simple_frequencies
-from s_package.grp_freq import group_frequencies
+from s_package.frequencies import simple_frequencies
+from s_package.frequencies import group_frequencies
 from s_package.class_centers_m import class_center
 from s_package.real_groups_m import get_real_groups
 from s_package.poss_groups import force_groups #Forcing a group
