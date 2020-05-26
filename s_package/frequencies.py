@@ -39,6 +39,12 @@ if __name__ == "__main__":
     
     results_gr_f = Group_frequencies(testing_lst, testing_data)
     for result in results_gr_f:
+        print(result)    
+    print("\n\n")
+
+    testing2 = [(0.5, 3.5), (3.5, 6.5), (6.5, 9.5), (9.5, 12.5), (12.5, 15.5), (15.5, 18.5), (18.5, 21.5), (21.5, 24.5), (24.5, 27.5)]
+    results_gr_f2 = Group_frequencies(testing2, testing_data)
+    for result in results_gr_f2:
         print(result)
 
     
