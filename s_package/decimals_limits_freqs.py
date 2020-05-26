@@ -7,19 +7,19 @@ def One_Decimal_Limits(min,max,width): #Minimum value of the data set, maximun v
             break 
         else:
             t_lim = (min, min + width) #Temporary limit. This will generate each limit.
-            min = round((min+0.1), 1)
+            min = round((min + 0.1), 1)
             limits_lst.append(t_lim)
             min += width
     return (limits_lst)
 
-def One_Decimals_Group_frequencies(limits, data): #Real groups and Decimals
+def One_Decimal_Group_frequencies(limits, data): #Real groups and Decimals
     limits = list(limits)
     data = list(data)
     lst_gr_freq = [] #Here will be added the limits aside with their respective frequencies. Like [((1,3),5), ((4,6), 7), ((7,9), 2)] From 1-3 are 5 numbers
     for limit in limits:
         gr_freq = 0
-        lower = float(limit[0]) - 0.05 #Lower limit
-        upper = float(limit[1]) + 0.05 #Upper limit. +1 Needed for ranges
+        lower = float(limit[0]) - 0.05 #Lower limit- -0.05 Needed for ranges
+        upper = float(limit[1]) + 0.05 #Upper limit. +0.05 Needed for ranges
         for num in data:
             if lower < num < upper:
                 gr_freq += 1 #If the number is contained in the actual limit

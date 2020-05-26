@@ -10,6 +10,8 @@ from s_package.real_groups_m import Get_real_groups
 from s_package.poss_groups import Force_groups #Forcing a group
 from s_package.exiting import Exiting
 from s_package.average import Average
+from s_package.decimals_limits_freqs import One_Decimal_Limits #This is jet to be implementes
+from s_package.decimals_limits_freqs import One_Decimal_Group_frequencies
 
 import time
 import collections
@@ -133,7 +135,7 @@ def frequency_distributions():
         decison_rl_grps = input("  Do you want to show the real groups? y/n ")
         if decison_rl_grps.upper() == "Y":
             real_groups = Get_real_groups(f_limits)
-            results_real_g_freq = Group_frequencies(real_groups, data)
+            results_real_g_freq = One_Decimal_Group_frequencies(real_groups, data)
             print("-----------------------------------------------------------------")
             print("Your real groups, and their frequencies are:\n")
             print("Real groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
