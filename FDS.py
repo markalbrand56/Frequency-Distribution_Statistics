@@ -10,11 +10,12 @@ from s_package.real_groups_m import Get_real_groups
 from s_package.poss_groups import Force_groups #Forcing a group
 from s_package.exiting import Exiting
 from s_package.average import Average
-from s_package.decimals_limits_freqs import One_Decimal_Limits #This is jet to be implementes
+#Working with decimals
+from s_package.decimals_limits_freqs import One_Decimal_Limits 
 from s_package.decimals_limits_freqs import One_Decimal_Group_frequencies
 from s_package.comprobations import Has_Decimals
 from s_package.real_groups_m import Decimal_real_groups
-
+#Python Packages
 import time
 import collections
 
