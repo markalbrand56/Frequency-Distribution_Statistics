@@ -21,6 +21,7 @@ def One_Decimal_Group_frequencies(limits, data): #Real groups and Decimals
         lower = float(limit[0]) - 0.05 #Lower limit- -0.05 Needed for ranges
         upper = float(limit[1]) + 0.05 #Upper limit. +0.05 Needed for ranges
         for num in data:
+            num = round(num, 1)
             if lower < num < upper:
                 gr_freq += 1 #If the number is contained in the actual limit
             else:

@@ -1,12 +1,12 @@
 def Has_Decimals (list: list):
     sum = 0
-    for i in list:
-        i = float(i)
-        sum += i
+    for number in list:
+        number = float(number)
+        sum += number
     
     #int_i = int(sum)
-    verification = float(sum - int(sum))
-    if verification == 0:
+    data_verification = float(sum - int(sum))
+    if data_verification == 0:
         return 0
     else:
         return 1

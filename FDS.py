@@ -12,6 +12,8 @@ from s_package.exiting import Exiting
 from s_package.average import Average
 from s_package.decimals_limits_freqs import One_Decimal_Limits #This is jet to be implementes
 from s_package.decimals_limits_freqs import One_Decimal_Group_frequencies
+from s_package.comprobations import Has_Decimals
+from s_package.real_groups_m import Decimal_real_groups
 
 import time
 import collections
@@ -44,14 +46,15 @@ def frequency_distributions():
             print(" Exiting...")
             break
 
+        verification = Has_Decimals(data)
         max_data = max(data)
         min_data = min(data)
-        i_range = max_data - min_data #Range
+        i_range = round((max_data - min_data), 1) #Range
         average = Average(data, counter)
         min_inter = int(input("\n  How many classes/groups do you at least need? ")) 
         max_inter = int(input("  How many classes/groups is your max? "))
         max_inter += 1 #This makes the max number of intervals actually be considered in the range.
-        p_group_sizes = Possible_groups(i_range,min_inter,max_inter) #Possible group sizes in a list of tuples (width, ammount of groups)
+        p_group_sizes = Possible_groups(i_range,min_inter,max_inter) #Possible group sizes in a list of tuples (width, ammount of groups). Decimals will have to force a width
         
         print("\n\n\n\n-----------------------------------------------------------------")
         time.sleep(timer)
@@ -109,8 +112,13 @@ def frequency_distributions():
         print("\nGroup's width: ", og_groups_width ) #Information for the user
         print("Ammount of groups:  ", chosen_group_size, "\n")
 
-        f_limits = Limits(min=min_data,max=max_data,width=gr_width) #returns list with all the limits.
-        result_gr_f = Group_frequencies(f_limits, data)
+        if verification == 0: #No deciamls
+            f_limits = Limits(min=min_data,max=max_data,width=gr_width) #returns list with all the limits.
+            result_gr_f = Group_frequencies(f_limits, data)
+        else:
+            f_limits = One_Decimal_Limits(min=min_data,max=max_data,width=gr_width) #returns list with all the limits.
+            result_gr_f = One_Decimal_Group_frequencies(f_limits, data)
+        
         acc_g_f = 0 #Accumulated group's frequency
         
         time.sleep(timer)
@@ -119,6 +127,7 @@ def frequency_distributions():
         print("Groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
         for freq in result_gr_f:
             center = Class_center(freq[0])
+            center = round(center, 1)
             #Define a variable for the center, and make it an object for the class
             acc_g_f += freq[1] #accumulated group's frequency
             time.sleep(timer_groups)
@@ -134,14 +143,20 @@ def frequency_distributions():
 
         decison_rl_grps = input("  Do you want to show the real groups? y/n ")
         if decison_rl_grps.upper() == "Y":
-            real_groups = Get_real_groups(f_limits)
-            results_real_g_freq = One_Decimal_Group_frequencies(real_groups, data)
+            if verification == 0:
+                real_groups = Get_real_groups(f_limits)
+                results_real_g_freq = One_Decimal_Group_frequencies(real_groups, data)
+            else:
+                real_groups = Decimal_real_groups(f_limits)
+                results_real_g_freq = One_Decimal_Group_frequencies(real_groups, data)
+
             print("-----------------------------------------------------------------")
             print("Your real groups, and their frequencies are:\n")
             print("Real groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
             acc_r_g_f = 0
             for freq in results_real_g_freq:
                 center = Class_center(freq[0])
+                center = round(center, 1)
                 #Define a variable for the center, and make it an object for the class
                 acc_r_g_f += freq[1] #accumulated group's frequency
                 time.sleep(timer_groups)
