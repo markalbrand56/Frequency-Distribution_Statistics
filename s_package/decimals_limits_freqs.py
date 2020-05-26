@@ -37,13 +37,13 @@ if __name__ == "__main__":
     print(len(testing_data))
     #testing_lst = [(1, 3), (4, 6), (7, 9), (10, 12), (13, 15), (16, 18), (19, 21), (22, 24), (25, 27)]
     
-    results_gr_f = One_Decimals_Group_frequencies(limits_testing, testing_data)
+    results_gr_f = One_Decimal_Group_frequencies(limits_testing, testing_data)
     for result in results_gr_f:
         print(result)    
     print("\n\n")
 
     testing_data2 = [1,2,5,5,7,8,8,8,8,9,9,11,13,15,15,16,18,18,18,20,20,22,24,25]
     testing2 = [(0.5, 3.5), (3.5, 6.5), (6.5, 9.5), (9.5, 12.5), (12.5, 15.5), (15.5, 18.5), (18.5, 21.5), (21.5, 24.5), (24.5, 27.5)]
-    results_gr_f2 = One_Decimals_Group_frequencies(testing2, testing_data2)
+    results_gr_f2 = One_Decimal_Group_frequencies(testing2, testing_data2)
     for result in results_gr_f2:
         print(result)
