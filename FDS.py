@@ -20,12 +20,12 @@ import time
 import collections
 
 def frequency_distributions():
-    print("------------ v0.3.0-alpha ------------")
+    print("------------ v0.3.0 ------------")
     data = [] #This holds every raw number introduced by the user
     counter = 0 #Counter for how many numbers the user inputs
     timer = 0.1 #For the user to see each thing at a time. Data focused
     timer_groups = 0.05 #Timer for the rows of tables. Faster than data
-    print("\nInstructions:\nEnter one number at a time.\nWhen you finish, enter '0' to move to the next step\n")
+    print("\nInstructions:\nEnter one number at a time. This program accepts numbers with up to 1 decimal position\nWhen you finish, enter '0' to move to the next step\n")
     time.sleep(1)
     tr = True #To end the program when the user is ready.
     while tr:
