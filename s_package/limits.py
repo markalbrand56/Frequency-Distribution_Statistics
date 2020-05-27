@@ -1,19 +1,19 @@
-#Module Limits
+# Module Limits
 
-def Limits(min,max,width): #Minimum value of the data set, maximun value of the data set, and groups' width.
-    limits_lst = [] #Limits
-    min -=1 
-    for x in range((int(min)),int(max)):
-        if min >= max: #Because later on the program increases min's value
-            break 
+
+def Limits(minimum, maximum, width):  # Minimum value of the data set, maximum value of the data set, and groups' width.
+    limits_lst = []  # Limits
+    minimum -= 1
+    for x in range((int(minimum)), int(maximum)):
+        if minimum >= maximum:  # Because later on the program increases min's value
+            break
         else:
-            min += 1
-            t_lim = (min, min + width) #Temporary limit. This will generate each limit.
+            minimum += 1
+            t_lim = (minimum, minimum + width)  # Temporary limit. This will generate each limit.
             limits_lst.append(t_lim)
-            min += width
-    return (limits_lst)
+            minimum += width
+    return limits_lst
+
 
 if __name__ == "__main__":
-    print(Limits(34,96,7)," Testing")
-    
-
+    print(Limits(34, 96, 7), " Testing")

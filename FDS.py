@@ -42,8 +42,7 @@ def frequency_distributions():
                 else:
                     pass  # Negative numbers won't be added
             except ValueError:
-                print(
-                    " Enter a number please.")  # Even though this exception is raised, the user can continue to try to enter data
+                print(" Enter a number please.")  # Even though this exception is raised, the user can continue entering data
         data = sorted(data)
         if len(data) <= 1:
             print("\nEnter more than one number, please. Try again.")
@@ -58,8 +57,7 @@ def frequency_distributions():
         min_inter = int(input("\n  How many classes/groups do you at least need? "))
         max_inter = int(input("  How many classes/groups is your max? "))
         max_inter += 1  # This makes the max number of intervals actually be considered in the range.
-        p_group_sizes = Possible_groups(i_range, min_inter,
-                                        max_inter)  # Possible group sizes in a list of tuples (width, ammount of groups). Decimals will have to force a width
+        p_group_sizes = Possible_groups(i_range, min_inter, max_inter)  # Possible group sizes in a list of tuples (width, ammount of groups). Decimals will have to force a width
 
         print("\n\n\n\n-----------------------------------------------------------------")
         time.sleep(timer)
@@ -75,8 +73,8 @@ def frequency_distributions():
         Simple_frequencies(data)  # this will sort data by how many times it appears in the data collection
         print("\n-----------------------------------------------------------------\n")
 
-        if p_group_sizes == 0:  # Exiting because the program can't do any more calculations, but giving the option to wait so the user can see the data that was already calculated
-            print("An error ocurred while calculating intervals...")
+        if p_group_sizes == 0:  # Exiting because the program can't do any more calculations
+            print("An error occurred while calculating intervals...")
             forcing = input(" Do you want to choose a width to force the creation of groups? y/n ")
             if forcing == "y" or forcing == "Y":
                 try:
@@ -100,7 +98,7 @@ def frequency_distributions():
         print("-----------------------------------------------------------------")
 
         if len(p_group_sizes) == 1:
-            chs_option = 0  # Chosen ammount of groups. Assigns (number_of_groups, divisor). Divisor is only used before to specify how was calculated the number of groups
+            chs_option = 0  # Chosen amount of groups. Assigns (number_of_groups, divisor).
         else:
             chs_option = int(
                 input("  Choose an option for the groups' size: "))  # Options to choose the width of the groups
@@ -109,22 +107,20 @@ def frequency_distributions():
                 pass
             else:
                 print("\n   The option you entered doesn't exist. I assigned the second option.")
-                chs_option = 1  # The len(p_group_sizes) has to be greater/equeal than 1 for this to be evaluated
+                chs_option = 1  # The len(p_group_sizes) has to be greater/equal than 1 for this to be evaluated
                 pass
 
-        chosen_group_size = p_group_sizes[chs_option][
-            1]  # This is the variable for the ammount of groups that should be crated.
+        chosen_group_size = p_group_sizes[chs_option][1]  # This is the variable for the amount of groups that should be crated.
         og_groups_width = int(p_group_sizes[chs_option][0])  # Variable for the untouched width
         gr_width = int(p_group_sizes[chs_option][0]) - 1  # This is the number that will be used to create the groups.
         print("\nGroup's width: ", og_groups_width)  # Information for the user
-        print("Ammount of groups:  ", chosen_group_size, "\n")
+        print("Amount of groups:  ", chosen_group_size, "\n")
 
-        if verification == 0:  # No deciamls
-            f_limits = Limits(min=min_data, max=max_data, width=gr_width)  # returns list with all the limits.
+        if verification == 0:  # No decimals
+            f_limits = Limits(minimum=min_data, maximum=max_data, width=gr_width)  # returns list with all the limits.
             result_gr_f = Group_frequencies(f_limits, data)
         else:
-            f_limits = One_Decimal_Limits(min=min_data, max=max_data,
-                                          width=gr_width)  # returns list with all the limits.
+            f_limits = One_Decimal_Limits(min=min_data, max=max_data, width=gr_width)  # list with all the limits.
             result_gr_f = One_Decimal_Group_frequencies(f_limits, data)
 
         acc_g_f = 0  # Accumulated group's frequency
@@ -174,7 +170,7 @@ def frequency_distributions():
                 print(freq[0], "  |  ", center, "  |  ", freq[1], "   |   ",
                       acc_r_g_f)  # [0] holds the limits, [1] holds the frequency
             print("---------------------------Accumulated frequency: ", acc_r_g_f)
-            # Need to enter the list withou the frequencies
+            # Need to enter the list without the frequencies
 
         Exiting()
 
