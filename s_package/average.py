@@ -7,7 +7,6 @@ def Average(data, count):
     return result
 
 
-
 if __name__ == "__main__":
-    testing_lst = [1,2,5,5,7,8,8,8,8,9,9,11,13,15,15,16,18,18,18,20,20,22,24,25]
+    testing_lst = [1, 2, 5, 5, 7, 8, 8, 8, 8, 9, 9, 11, 13, 15, 15, 16, 18, 18, 18, 20, 20, 22, 24, 25]
     print(Average(testing_lst, 24))
