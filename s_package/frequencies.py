@@ -1,7 +1,6 @@
-import collections
-
 
 def Simple_frequencies(list):
+    import collections
     import time
     counter = collections.Counter(list) #Counts each appearence of each number. This returns it in the format {(value, count), (value, count)}
 

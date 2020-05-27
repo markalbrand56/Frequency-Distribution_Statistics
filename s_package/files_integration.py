@@ -1,3 +1,4 @@
+#Currently not working
 def custom_file(name):
     file = name + ".txt"
     file = open(file, 'rt')
