@@ -132,7 +132,6 @@ def frequency_distributions():
         for freq in result_gr_f:
             center = Class_center(freq[0])
             center = round(center, 1)
-            # Define a variable for the center, and make it an object for the class
             acc_g_f += freq[1]  # accumulated group's frequency
             time.sleep(timer_groups)
             print(freq[0], "  |  ", center, "  |  ", freq[1], "   |   ",
