@@ -1,6 +1,6 @@
 #Module Limits
 
-def limits(min,max,width): #Minimum value of the data set, maximun value of the data set, and groups' width.
+def Limits(min,max,width): #Minimum value of the data set, maximun value of the data set, and groups' width.
     limits_lst = [] #Limits
     min -=1 
     for x in range((int(min)),int(max)):
@@ -14,6 +14,6 @@ def limits(min,max,width): #Minimum value of the data set, maximun value of the 
     return (limits_lst)
 
 if __name__ == "__main__":
-    print(limits(34,96,7)," Testing")
+    print(Limits(34,96,7)," Testing")
     
 
