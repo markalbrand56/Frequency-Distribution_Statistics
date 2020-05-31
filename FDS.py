@@ -21,7 +21,7 @@ import collections
 
 
 def frequency_distributions():
-    print("------------ v0.3.0 ------------")
+    print("------------ v0.4.0-alpha ------------")
     data = []  # This holds every raw number introduced by the user
     counter = 0  # Counter for how many numbers the user inputs
     timer = 0.1  # For the user to see each thing at a time. Data focused
