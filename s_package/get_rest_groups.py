@@ -1,4 +1,4 @@
-def Get_other_groups(lower_limit, upper_limit, amount_groups):
+def get_other_groups(lower_limit, upper_limit, amount_groups):
     """
     One group is needed to calculate the rest. It's also needed the amount of groups to create
     """
@@ -16,6 +16,6 @@ def Get_other_groups(lower_limit, upper_limit, amount_groups):
 
 if __name__ == '__main__':
     try:
-        print(Get_other_groups(60, 69, 6))
+        print(get_other_groups(60, 69, 6))
     except:
         print("error")

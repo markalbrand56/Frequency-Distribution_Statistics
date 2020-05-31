@@ -1,10 +1,10 @@
-from s_package.get_rest_groups import Get_other_groups
-from s_package.exiting import Exiting
-from s_package.class_centers_m import Class_center
-from s_package.arithmetic_average import Aritmetic_average
+from s_package.get_rest_groups import get_other_groups
+from s_package.exiting import exiting
+from s_package.class_centers_m import class_center
+from s_package.arithmetic_avrg import arithmetic_average
 
 
-def FDS_R():
+def fd_arithmetic_averages():
     """
     FDS_R is meant to be used when te table is given, but not the data.
     This means that the user should also have every grouped frequency.
@@ -22,7 +22,7 @@ def FDS_R():
             input_loop = False
         except ValueError:
             print("Enter a number, please")
-    limits = Get_other_groups(first_lower, first_upper, amount_groups)
+    limits = get_other_groups(first_lower, first_upper, amount_groups)
     print(limits)
 
     groups_frequencies = []
@@ -38,15 +38,15 @@ def FDS_R():
 
     class_centers = []
     for limit in limits:
-        center = Class_center(limit)
+        center = class_center(limit)
         class_centers.append(center)
     print(class_centers)
 
-    a_average = Aritmetic_average(groups_frequencies, class_centers)
+    a_average = arithmetic_average(groups_frequencies, class_centers)
     print("Your arithmetic average is: {}".format(a_average))
 
     # TODO Arithmetic average with deviation
 
 
 if __name__ == '__main__':
-    FDS_R()
+    fd_arithmetic_averages()

@@ -1,8 +1,8 @@
-def Exiting():
+def exiting():
     import time
     while True:
-        exiting = input("   Do you want to exit? y/n ")
-        if exiting == "y" or exiting == "Y":
+        exiting_decision = input("   Do you want to exit? y/n ")
+        if exiting_decision == "y" or exiting_decision == "Y":
             time.sleep(1)
             tr = False
             exit()

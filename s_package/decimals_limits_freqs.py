@@ -1,19 +1,18 @@
 # Together for testing
-def One_Decimal_Limits(min, max,
-                       width):  # Minimum value of the data set, maximun value of the data set, and groups' width.
+def one_decimal_limits(min_value, max_value, width):  # Minimum and maximum value of the data set, and groups' width.
     limits_lst = []  # Limits
-    for x in range((int(min)), int(max)):
-        if min >= max:  # Because later on the program increases min's value
+    for x in range((int(min_value)), int(max_value)):
+        if min_value >= max_value:  # Because later on the program increases min's value
             break
         else:
-            t_lim = (min, min + width)  # Temporary limit. This will generate each limit.
-            min = round((min + 0.1), 1)
+            t_lim = (min_value, min_value + width)  # Temporary limit. This will generate each limit.
+            min_value = round((min_value + 0.1), 1)
             limits_lst.append(t_lim)
-            min += width
-    return (limits_lst)
+            min_value += width
+    return limits_lst
 
 
-def One_Decimal_Group_frequencies(limits, data):  # Real groups and Decimals
+def one_decimal_group_frequencies(limits, data):  # Real groups and Decimals
     limits = list(limits)
     data = list(data)
     lst_gr_freq = []  # Limits will be added aside with their respective frequencies.[((1,3),5), ((4,6), 7), ((7,9), 2)]
@@ -32,7 +31,7 @@ def One_Decimal_Group_frequencies(limits, data):  # Real groups and Decimals
 
 
 if __name__ == "__main__":
-    limits_testing = One_Decimal_Limits(1.2, 24.1, 3)
+    limits_testing = one_decimal_limits(1.2, 24.1, 3)
     print(limits_testing)
     testing_data = [1.2, 1.5, 2.0, 2.5, 2.6, 3.0, 3.5, 4.0, 4.5, 5.0, 7.0, 7.0, 8.2, 8.2, 8.5, 8.8, 9.9, 10.1, 10.7,
                     11.0, 12.0, 13.0, 15.0, 15.0, 16.0, 16.1, 17.5, 17.7, 17.7, 17.8, 18.1, 18.5, 20.0, 21.0, 21.0,
@@ -41,7 +40,7 @@ if __name__ == "__main__":
     print(len(testing_data))
 
     print("\nTest1")
-    results_gr_f = One_Decimal_Group_frequencies(limits_testing, testing_data)
+    results_gr_f = one_decimal_group_frequencies(limits_testing, testing_data)
     for result in results_gr_f:
         print(result)
     print("\n\n")
@@ -50,6 +49,6 @@ if __name__ == "__main__":
     testing_data2 = [1, 2, 5, 5, 7, 8, 8, 8, 8, 9, 9, 11, 13, 15, 15, 16, 18, 18, 18, 20, 20, 22, 24, 25]
     testing2 = [(0.5, 3.5), (3.5, 6.5), (6.5, 9.5), (9.5, 12.5), (12.5, 15.5), (15.5, 18.5), (18.5, 21.5), (21.5, 24.5),
                 (24.5, 27.5)]
-    results_gr_f2 = One_Decimal_Group_frequencies(testing2, testing_data2)
+    results_gr_f2 = one_decimal_group_frequencies(testing2, testing_data2)
     for result in results_gr_f2:
         print(result)
