@@ -1,9 +1,3 @@
-"""
-FDS_R is meant to be used when te table is given, but not the data.
-This means that the user should also have every grouped frequency.
-The program will calculate class centers, and the arithmetic average of the table (using the formula and deviation)
-"""
-
 from s_package.get_rest_groups import Get_other_groups
 from s_package.exiting import Exiting
 from s_package.class_centers_m import Class_center
@@ -11,6 +5,12 @@ from s_package.arithmetic_average import Aritmetic_average
 
 
 def FDS_R():
+    """
+    FDS_R is meant to be used when te table is given, but not the data.
+    This means that the user should also have every grouped frequency.
+    The program will calculate class centers, and the arithmetic average of the table (using the formula and deviation)
+    """
+
     input_loop = True
     frequencies_loop = True
 
@@ -45,7 +45,8 @@ def FDS_R():
     a_average = Aritmetic_average(groups_frequencies, class_centers)
     print("Your arithmetic average is: {}".format(a_average))
 
-    #TODO Arithmetic average with deviation
+    # TODO Arithmetic average with deviation
+
 
 if __name__ == '__main__':
     FDS_R()
