@@ -6,9 +6,11 @@ The program will calculate class centers, and the arithmetic average of the tabl
 
 from s_package.get_rest_groups import Get_other_groups
 from s_package.exiting import Exiting
+from s_package.class_centers_m import Class_center
+from s_package.arithmetic_average import Aritmetic_average
 
 
-def arithmetic_average():
+def FDS_R():
     input_loop = True
     frequencies_loop = True
 
@@ -34,7 +36,16 @@ def arithmetic_average():
 
     print(groups_frequencies)
 
+    class_centers = []
+    for limit in limits:
+        center = Class_center(limit)
+        class_centers.append(center)
+    print(class_centers)
 
+    a_average = Aritmetic_average(groups_frequencies, class_centers)
+    print("Your arithmetic average is: {}".format(a_average))
+
+    #TODO Arithmetic average with deviation
 
 if __name__ == '__main__':
-    arithmetic_average()
+    FDS_R()
