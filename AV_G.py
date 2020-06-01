@@ -4,9 +4,9 @@ from s_package.class_centers_m import class_center
 from s_package.arithmetic_avrg import arithmetic_average
 
 
-def fd_arithmetic_averages():
+def arithmetic_averages_grouped_freq():
     """
-    FDS_R is meant to be used when te table is given, but not the data.
+    AV_G is meant to be used when te table is given, but not the data.
     This means that the user should also have every grouped frequency.
     The program will calculate class centers, and the arithmetic average of the table (using the formula and deviation)
     """
@@ -22,6 +22,11 @@ def fd_arithmetic_averages():
             input_loop = False
         except ValueError:
             print("Enter a number, please")
+
+    if amount_groups == 0:
+        print("You can't have 0 groups")
+        exiting()
+
     limits = get_other_groups(first_lower, first_upper, amount_groups)
     print(limits)
 
@@ -33,6 +38,7 @@ def fd_arithmetic_averages():
             groups_frequencies.append(group_freq)
         except ValueError:
             print("Enter a number, please")
+            exiting()
 
     print(groups_frequencies)
 
@@ -49,4 +55,4 @@ def fd_arithmetic_averages():
 
 
 if __name__ == '__main__':
-    fd_arithmetic_averages()
+    arithmetic_averages_grouped_freq()

@@ -1,12 +1,11 @@
 def exiting():
     import time
     while True:
-        exiting_decision = input("   Do you want to exit? y/n ")
-        if exiting_decision == "y" or exiting_decision == "Y":
+        exiting_decision = input("  The program will exit. Do you want to wait? y/n ")
+        if exiting_decision == "n" or exiting_decision == "N":
             time.sleep(1)
-            tr = False
             exit()
         else:
-            print("   Ok, when you're ready exit by pressing 'CTRL'+'C' ")
+            print("   Ok, when you're ready, exit by pressing 'CTRL'+'C' ")
             while True:
                 pass
