@@ -1,7 +1,7 @@
-from s_package.get_rest_groups import get_other_groups
-from s_package.exiting import exiting
-from s_package.class_centers_m import class_center
-from s_package.arithmetic_avrg import arithmetic_average_groups
+from various_calculations.get_rest_groups import get_other_groups
+from various_calculations.exiting import exiting
+from various_calculations.class_centers_m import class_center
+from various_calculations.arithmetic_avrg import arithmetic_average_groups
 
 
 def arithmetic_averages_grouped_freq():

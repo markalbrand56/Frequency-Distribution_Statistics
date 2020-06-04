@@ -1,4 +1,4 @@
-from s_package.exiting import exiting
+from various_calculations.exiting import exiting
 
 
 def arithmetic_averages_simple_freq():

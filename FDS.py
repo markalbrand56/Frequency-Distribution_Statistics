@@ -1,20 +1,20 @@
 #!/usr/bin/env python3.8.3
 # _*_ coding: "utf-8" _*_
 
-from s_package.poss_groups import possible_groups  # Function for possible groups
-from s_package.limits import regular_limits
-from s_package.frequencies import simple_frequencies
-from s_package.frequencies import group_frequencies
-from s_package.class_centers_m import class_center
-from s_package.real_groups_m import get_real_groups
-from s_package.poss_groups import force_groups  # Forcing a group
-from s_package.exiting import exiting
-from s_package.averages import average
+from various_calculations.poss_groups import possible_groups  # Function for possible groups
+from various_calculations.limits import regular_limits
+from various_calculations.frequencies import simple_frequencies
+from various_calculations.frequencies import group_frequencies
+from various_calculations.class_centers_m import class_center
+from various_calculations.real_groups_m import get_real_groups
+from various_calculations.poss_groups import force_groups  # Forcing a group
+from various_calculations.exiting import exiting
+from various_calculations.averages import average
 # Working with decimals
-from s_package.decimals_limits_freqs import one_decimal_limits
-from s_package.decimals_limits_freqs import one_decimal_group_frequencies
-from s_package.comprobations import has_decimals
-from s_package.real_groups_m import decimal_real_groups
+from various_calculations.decimals_limits_freqs import one_decimal_limits
+from various_calculations.decimals_limits_freqs import one_decimal_group_frequencies
+from various_calculations.comprobations import has_decimals
+from various_calculations.real_groups_m import decimal_real_groups
 # Python Packages
 import time
 import collections
