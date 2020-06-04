@@ -481,6 +481,6 @@ venv.bak/
 dmypy.json
 *.pyc
 *.pyc
-s_package/__pycache__/interval.cpython-38.pyc
-s_package/__pycache__/m_limits.cpython-38.pyc
-s_package/__pycache__/interval.cpython-38.pyc
+various_calculations/__pycache__/interval.cpython-38.pyc
+various_calculations/__pycache__/m_limits.cpython-38.pyc
+various_calculations/__pycache__/interval.cpython-38.pyc
