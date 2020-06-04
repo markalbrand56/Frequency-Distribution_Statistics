@@ -1,4 +1,5 @@
 from various_calculations.exiting import exiting
+from time import sleep
 
 
 def arithmetic_averages_simple_freq():
@@ -10,6 +11,7 @@ def arithmetic_averages_simple_freq():
     data = []
     data_counter = 0
     main_loop = True
+    timer_tables = 0.05
     while main_loop:
         while True:  # To keep receiving data from the user
             try:
@@ -85,6 +87,7 @@ def arithmetic_averages_simple_freq():
             individual_number = data_frequencies[element][0]
             individual_frequency = data_frequencies[element][1]
             individual_deviation = deviations_list[element][1]
+            sleep(timer_tables)
             print(" {}  |  {}  |  {}".format(individual_number, individual_frequency, individual_deviation))
 
         deviations_result = data_frequencies[deviation_position][0] + (deviations_subtotal / data_counter)

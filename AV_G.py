@@ -3,6 +3,8 @@ from various_calculations.exiting import exiting
 from various_calculations.class_centers_m import class_center
 from various_calculations.arithmetic_avrg import arithmetic_average_groups
 
+from time import sleep
+
 
 def arithmetic_averages_grouped_freq():
     """
@@ -12,6 +14,7 @@ def arithmetic_averages_grouped_freq():
     """
 
     input_loop = True
+    timer_groups = 0.05
     while input_loop:
         try:
             first_lower = int(input("Whats the lower limit of the first group? "))
@@ -83,6 +86,7 @@ def arithmetic_averages_grouped_freq():
         individual_group = groups_frequencies[element][0]
         individual_frequency = groups_frequencies[element][1]
         individual_deviation = deviations[element][1]
+        sleep(timer_groups)
         print(" {}  |  {}  |  {}".format(individual_group, individual_frequency, individual_deviation))
 
     deviations_result = class_centers[deviation_position] + (deviations_subtotal / frequency_total) * width
