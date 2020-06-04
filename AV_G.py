@@ -1,7 +1,7 @@
 from s_package.get_rest_groups import get_other_groups
 from s_package.exiting import exiting
 from s_package.class_centers_m import class_center
-from s_package.arithmetic_avrg import arithmetic_average
+from s_package.arithmetic_avrg import arithmetic_average_groups
 
 
 def arithmetic_averages_grouped_freq():
@@ -40,13 +40,12 @@ def arithmetic_averages_grouped_freq():
             print("Enter a number, please")
             exiting()
 
-
     class_centers = []
     for limit in limits:
         center = class_center(limit)
         class_centers.append(center)
 
-    a_average = arithmetic_average(groups_frequencies, class_centers)
+    a_average = arithmetic_average_groups(groups_frequencies, class_centers)
     print("\n\n  The arithmetic average is: {}\n".format(a_average))
 
     frequency_total = 0

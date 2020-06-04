@@ -17,12 +17,12 @@ If you want to contribute, I thank you in advance. This document will have some 
 
 * Start by submitting an **Issue** about the feature you want to suggest.
   * Explain in what way it would improve the program as a whole.
-  * Explain how it relates to the topic (Frequecy Distributions and variants) and the theory of it.
-  * Add the appropiate labels for your issue. This includes the **enhancement** label.
+  * Explain how it relates to the topic (Frequency Distributions and variants) and the theory of it.
+  * Add the appropriate labels for your issue. This includes the **enhancement** label.
 * Create a new branch with a clear and descriptive title for your submission.
 * When you are ready, make a **pull request** linking it to the Issue that you submitted before.
 * If you want to suggest the feature, but you don't now how to actually implement it:
-  * Don't worry, just submitt the Issue. Describe the feature as good as you can.
+  * Don't worry, just submit the Issue. Describe the feature as good as you can.
   * I will have a look at it, and if the feature helps the program as a whole, I will do my best effort to try to develop it, and give you credit for the suggestion.
 
-Thank you for reading this. Feel welcome to colaborate, for any more doubts you can contact me at *mark.albrand@protonmail.com*
+Thank you for reading this. Feel welcome to collaborate, for any more doubts you can contact me at *mark.albrand@protonmail.com*

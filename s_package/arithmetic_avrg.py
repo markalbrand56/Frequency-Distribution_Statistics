@@ -1,4 +1,4 @@
-def arithmetic_average(groups, centers):
+def arithmetic_average_groups(groups, centers):
     accumulated_freq = 0
     for i in range(len(groups)):
         freq = groups[i][1]
@@ -19,4 +19,4 @@ def arithmetic_average(groups, centers):
 if __name__ == '__main__':
     test_grp = [((750, 799), 10), ((800, 849), 13), ((850, 899), 8), ((900, 949), 9)]
     test_centers = [774.5, 824.5, 874.5, 924.5]
-    print(arithmetic_average(test_grp, test_centers))
+    print(arithmetic_average_groups(test_grp, test_centers))

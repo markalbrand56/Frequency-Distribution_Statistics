@@ -1,8 +1,8 @@
-def possible_groups(rang, min=8, max=19):  # Function for possible groups
+def possible_groups(rang, minimum=8, maximum=19):  # Function for possible groups
     possible_amounts_groups = []  # This holds every number that could divide the range, to calculate groups' width.
     results = []  # Holds each possible groups' width alongside with the number of groups it should produce.
 
-    for x in range(min, max):  # Range of amount of groups
+    for x in range(minimum, maximum):  # Range of amount of groups
         possible_amounts_groups.append(x)
 
     for num_groups in possible_amounts_groups:

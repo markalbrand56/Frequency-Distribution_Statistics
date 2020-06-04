@@ -1,5 +1,4 @@
 from s_package.exiting import exiting
-from time import sleep
 
 
 def arithmetic_averages_simple_freq():
@@ -30,7 +29,6 @@ def arithmetic_averages_simple_freq():
             print(" \nEnter more than one number, please. Try again.")
             print(" Exiting...")
             break
-
 
         data_frequencies = []
         for number in data:
@@ -91,7 +89,7 @@ def arithmetic_averages_simple_freq():
 
         deviations_result = data_frequencies[deviation_position][0] + (deviations_subtotal / data_counter)
         deviations_result = round(deviations_result, 2)
-        print("\n  The result for the arithmetic average using deviation was: ",  deviations_result)
+        print("\n  The result for the arithmetic average using deviation was: ", deviations_result)
 
         # TODO Clean code, and show results in a table
 
