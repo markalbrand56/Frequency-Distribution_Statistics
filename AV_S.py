@@ -2,9 +2,11 @@ from various_calculations.exiting import exiting
 from time import sleep
 
 
+# TODO Give color to results
 def arithmetic_averages_simple_freq():
     """
-    AV_S is meant to be used when the table is given, but not the data itself.
+    Arithmetic Averages for simple frequencies is meant to be used when the table of simple frequencies is given,
+    but not the data itself.
     This means that the user should also have every frequency for each number.
     The program will calculate class centers, and the arithmetic average of the table (using the formula and deviation)
     """
@@ -12,6 +14,9 @@ def arithmetic_averages_simple_freq():
     data_counter = 0
     main_loop = True
     timer_tables = 0.05
+
+    Instructions_AVS()
+
     while main_loop:
         while True:  # To keep receiving data from the user
             try:
@@ -94,9 +99,13 @@ def arithmetic_averages_simple_freq():
         deviations_result = round(deviations_result, 2)
         print("\n  The result for the arithmetic average using deviation was: ", deviations_result)
 
-        # TODO Clean code, and show results in a table
-
         main_loop = False
+
+
+def Instructions_AVS():
+    print("\n  INSTRUCTIONS:")
+    print(" Enter one number at a time. Do NOT repeat numbers, their frequencies will be asked later")
+    print(" When you reach the section for Arithmetic Average with deviation, the position refers to the row number")
 
 
 if __name__ == '__main__':

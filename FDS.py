@@ -19,16 +19,24 @@ from various_calculations.real_groups_m import decimal_real_groups
 import time
 import collections
 
-
+# TODO Give color to results
 def frequency_distributions():
+    """
+    'Frequency Distributions' is meant to create the tables of simple and grouped frequencies for a set of numbers.
+    The only thing the user needs is the data set.
+    This program will calculate all possibilities of group arrangements for whole numbers. This can be controlled by the
+    user, because the user can set a minimum of created groups and a maximum.
+    If the previous step fails (the division between range and width is not a whole number) the user can force a width.
+    This program also calculates real groups.
+    """
+
     data = []  # This holds every raw number introduced by the user
     counter = 0  # Counter for how many numbers the user inputs
     timer = 0.1  # For the user to see each thing at a time. Data focused
     timer_groups = 0.05  # Timer for the rows of tables. Faster than data
-    
-    print("\nInstructions:\nEnter one number at a time. This program accepts numbers with up to 1 decimal position\n")
-    print("\nWhen you finish, enter '0' to move to the next step\n")
-    
+
+    Instructions_FDS()
+
     time.sleep(1)
     main_loop = True  # To end the program when the user is ready.
     while main_loop:
@@ -174,6 +182,12 @@ def frequency_distributions():
             # Need to enter the list without the frequencies
 
         exiting()
+
+
+def Instructions_FDS():
+    print("\n  INSTRUCTIONS:\nEnter one number at a time, and enter each instance of every number.")
+    print("This program accepts numbers with up to 1 decimal position")
+    print("When you finish, enter '0' to move to the next step")
 
 
 if __name__ == "__main__":

@@ -6,11 +6,14 @@ from various_calculations.arithmetic_avrg import arithmetic_average_groups
 from time import sleep
 
 
+# TODO Give color to results
 def arithmetic_averages_grouped_freq():
     """
-    AV_G is meant to be used when the table is given with groups, but not the data itself.
-    This means that the user should also have every grouped frequency.
-    The program will calculate class centers, and the arithmetic average of the table (using the formula and deviation)
+      'Arithmetic Averages for grouped frequencies' is meant to be used when a table of grouped frequencies is given,
+    but not the data itself.
+      This means that the user should have: Groups and the Frequency for each group.
+      The program will calculate class centers, and the arithmetic average of the table (using the standard formula and
+    deviation)
     """
 
     input_loop = True
@@ -94,6 +97,13 @@ def arithmetic_averages_grouped_freq():
     print("\n  The result of the arithmetic average using deviation is: {}".format(deviations_result))
 
     # TODO Clean code, and show results in a table
+
+
+def Instructions_AVG():
+    print("\n  INSTRUCTIONS:")
+    print(" Enter one number at a time. \nYou only need to enter the first group of the table. ")
+    print("You will enter the frequencies after the table is generated.")
+    print(" When you reach the section for Arithmetic Average with deviation, the position refers to the row number")
 
 
 if __name__ == '__main__':
