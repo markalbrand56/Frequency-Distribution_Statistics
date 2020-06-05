@@ -17,7 +17,9 @@ from various_calculations.comprobations import has_decimals
 from various_calculations.real_groups_m import decimal_real_groups
 # Python Packages
 import time
-import collections
+# Extras
+from etc.colors import Colors
+
 
 # TODO Give color to results
 def frequency_distributions():
@@ -34,7 +36,7 @@ def frequency_distributions():
     counter = 0  # Counter for how many numbers the user inputs
     timer = 0.1  # For the user to see each thing at a time. Data focused
     timer_groups = 0.05  # Timer for the rows of tables. Faster than data
-
+    text_color = Colors()
     Instructions_FDS()
 
     time.sleep(1)
@@ -68,6 +70,7 @@ def frequency_distributions():
         max_groups += 1  # This makes the max number of intervals actually be considered in the range.
         p_group_sizes = possible_groups(i_range, min_groups, max_groups)  # Possible group sizes in list of tuples (w,#)
 
+        text_color.GREEN()
         print("\n\n\n\n-----------------------------------------------------------------")
         time.sleep(timer)
         print("Sorted data: ", data)
@@ -81,30 +84,39 @@ def frequency_distributions():
         time.sleep(timer)
         simple_frequencies(data)  # this will sort data by how many times it appears in the data collection
         print("\n-----------------------------------------------------------------\n")
+        text_color.RESET()
 
         if p_group_sizes == 0:  # Exiting because the program can't do any more calculations
+            text_color.RED()
             print("An error occurred while calculating intervals...")
             forcing = input(" Do you want to choose a width to force the creation of groups? y/n ")
+            text_color.RESET()
             if forcing == "y" or forcing == "Y":
                 try:
                     forced_width = int(input("\nEnter the width you want to use: "))
                     if forced_width >= 0:
                         p_group_sizes = force_groups(i_range, forced_width)
                     else:
+                        text_color.RED()
                         print("Invalid width")
+                        text_color.RESET()
                         exiting()
                 except ValueError:
+                    text_color.RED()
                     print("Enter a number")
+                    text_color.RESET()
             else:
                 exiting()  # Without a possible group size it cannot continue with the calculations
 
         else:
+            text_color.BLUE()
             time.sleep(timer)
             for i in range(len(p_group_sizes)):
                 time.sleep(timer)
                 print("\n", i + 1, ". Possible groups' width: {} ".format(p_group_sizes[i][0]),
                       "  This will give you {} groups".format(p_group_sizes[i][1]))
         print("-----------------------------------------------------------------")
+        text_color.RESET()
 
         if len(p_group_sizes) == 1:
             chs_option = 0  # Chosen amount of groups. Assigns (number_of_groups, divisor).
@@ -119,13 +131,13 @@ def frequency_distributions():
                 chs_option = 1  # The len(p_group_sizes) has to be greater/equal than 1 for this to be evaluated
                 pass
 
-        chosen_group_size = p_group_sizes[chs_option][
-            1]  # This is the variable for the amount of groups that should be crated.
+        chosen_group_size = p_group_sizes[chs_option][1]  # Variable for the amount of groups that should be crated.
         og_groups_width = int(p_group_sizes[chs_option][0])  # Variable for the untouched width
         gr_width = int(p_group_sizes[chs_option][0]) - 1  # This is the number that will be used to create the groups.
+        text_color.GREEN()
         print("\nGroup's width: ", og_groups_width)  # Information for the user
         print("Amount of groups:  ", chosen_group_size, "\n")
-
+        text_color.RESET()
         if verification == 0:  # No decimals
             f_limits = regular_limits(minimum=min_data, maximum=max_data, width=gr_width)  # returns list with limits.
             result_gr_f = group_frequencies(f_limits, data)
@@ -136,6 +148,7 @@ def frequency_distributions():
         acc_g_f = 0  # Accumulated group's frequency
 
         time.sleep(timer)
+        text_color.GREEN()
         print("-----------------------------------------------------------------")
         print("Your groups, and their frequencies are:\n")
         print("Groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
@@ -147,7 +160,7 @@ def frequency_distributions():
             print(freq[0], "  |  ", center, "  |  ", freq[1], "   |   ",
                   acc_g_f)  # [0] holds the limits, [1] holds the frequency
         print("---------------------------Accumulated frequency: ", acc_g_f)
-
+        text_color.RESET()
         if len(f_limits) == chosen_group_size:
             pass
         elif len(f_limits) > chosen_group_size:
@@ -165,7 +178,7 @@ def frequency_distributions():
             else:
                 real_groups = decimal_real_groups(f_limits)
                 results_real_g_freq = one_decimal_group_frequencies(real_groups, data)
-
+            text_color.GREEN()
             print("-----------------------------------------------------------------")
             print("Your real groups, and their frequencies are:\n")
             print("Real groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
@@ -179,7 +192,7 @@ def frequency_distributions():
                 print(freq[0], "  |  ", center, "  |  ", freq[1], "   |   ",
                       acc_r_g_f)  # [0] holds the limits, [1] holds the frequency
             print("---------------------------Accumulated frequency: ", acc_r_g_f)
-            # Need to enter the list without the frequencies
+            text_color.RESET()
 
         exiting()
 
