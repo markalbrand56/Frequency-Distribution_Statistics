@@ -8,7 +8,7 @@ from various_calculations.frequencies import group_frequencies
 from various_calculations.class_centers_m import class_center
 from various_calculations.real_groups_m import get_real_groups
 from various_calculations.poss_groups import force_groups  # Forcing a group
-from various_calculations.exiting import exiting
+from etc.exiting import exiting
 from various_calculations.averages import average
 # Working with decimals
 from various_calculations.decimals_limits_freqs import one_decimal_limits
@@ -53,7 +53,9 @@ def frequency_distributions():
                 else:
                     pass  # Negative numbers won't be added
             except ValueError:
+                text_color.RED()
                 print(" Enter a number please.")  # With this exception raised, the user can continue entering data
+                text_color.RESET()
         data = sorted(data)
         if len(data) <= 1:
             print("\nEnter more than one number, please. Try again.")
@@ -200,7 +202,7 @@ def frequency_distributions():
 def Instructions_FDS():
     print("\n  INSTRUCTIONS:\nEnter one number at a time, and enter each instance of every number.")
     print("This program accepts numbers with up to 1 decimal position")
-    print("When you finish, enter '0' to move to the next step")
+    print("When you finish, enter '0' to move to the next step\n")
 
 
 if __name__ == "__main__":

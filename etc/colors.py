@@ -14,5 +14,8 @@ class Colors:
     def GREEN(self):
         print(Fore.GREEN)
 
+    def YELLOW(self):
+        print(Fore.YELLOW)
+
     def RESET(self):
         print(Style.RESET_ALL)

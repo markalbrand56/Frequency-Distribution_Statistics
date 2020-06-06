@@ -1,5 +1,8 @@
-from various_calculations.exiting import exiting
+# Calculations
+from etc.exiting import exiting
+# Extras
 from time import sleep
+from etc.colors import Colors
 
 
 # TODO Give color to results
@@ -14,6 +17,7 @@ def arithmetic_averages_simple_freq():
     data_counter = 0
     main_loop = True
     timer_tables = 0.05
+    text_color = Colors()
 
     Instructions_AVS()
 
@@ -60,8 +64,9 @@ def arithmetic_averages_simple_freq():
 
         arithmetic_average = cumulative_data / data_counter
         arithmetic_average = round(arithmetic_average, 2)
-        print("\n  The arithmetic average is: {}\n".format(arithmetic_average))
-
+        text_color.GREEN()
+        print("  The arithmetic average is: {}".format(arithmetic_average))
+        text_color.RESET()
         dev_loop = True  # Deviation loop
         while dev_loop:
             try:
@@ -71,7 +76,9 @@ def arithmetic_averages_simple_freq():
                 deviation_position -= 1  # List order
                 dev_loop = False
             except ValueError:
+                text_color.RED()
                 print("Enter a valid number please")
+                text_color.RESET()
 
         deviations_list = []
         for num in range(len(data_frequencies)):
@@ -87,6 +94,7 @@ def arithmetic_averages_simple_freq():
             result = f * d
             deviations_subtotal += result
 
+        text_color.BLUE()
         print("\n Value | Frequency | Deviation")
         for element in range(len(data)):
             individual_number = data_frequencies[element][0]
@@ -94,7 +102,7 @@ def arithmetic_averages_simple_freq():
             individual_deviation = deviations_list[element][1]
             sleep(timer_tables)
             print(" {}  |  {}  |  {}".format(individual_number, individual_frequency, individual_deviation))
-
+        text_color.GREEN()
         deviations_result = data_frequencies[deviation_position][0] + (deviations_subtotal / data_counter)
         deviations_result = round(deviations_result, 2)
         print("\n  The result for the arithmetic average using deviation was: ", deviations_result)

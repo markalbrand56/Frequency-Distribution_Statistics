@@ -5,17 +5,21 @@ from AV_S import arithmetic_averages_simple_freq
 # Python modules
 import os
 from time import sleep
+# Extras
+from etc.colors import Colors
 
 
 def main():
+    text_color = Colors()
+    text_color.RED()
     print("\n------------ v0.4.0-alpha ------------\n")
-
+    text_color.YELLOW()
     print("Choose an option:")
     print("1. Frequency Distributions")
     print("2. Arithmetic Averages for simple frequencies")
     print("3. Arithmetic Averages for grouped frequencies")
     print("4. Help")
-
+    text_color.RESET()
     input_loop = True
     while input_loop:
         try:
