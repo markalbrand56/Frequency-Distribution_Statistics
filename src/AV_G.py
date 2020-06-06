@@ -1,15 +1,14 @@
 # Calculations
-from various_calculations.get_rest_groups import get_other_groups
-from various_calculations.class_centers_m import class_center
-from various_calculations.arithmetic_avrg import arithmetic_average_groups
+from src.various_calculations.get_rest_groups import get_other_groups
+from src.various_calculations.class_centers_m import class_center
+from src.various_calculations.arithmetic_avrg import arithmetic_average_groups
 
 # Extras
 from time import sleep
-from etc.colors import Colors
-from etc.exiting import exiting
+from src.etc.colors import Colors
+from src.etc.exiting import exiting
 
 
-# TODO Give color to results
 def arithmetic_averages_grouped_freq():
     """
       'Arithmetic Averages for grouped frequencies' is meant to be used when a table of grouped frequencies is given,
@@ -113,12 +112,17 @@ def arithmetic_averages_grouped_freq():
 
     exiting()
 
+
 def Instructions_AVG():
     print("\n  INSTRUCTIONS:")
     print("Enter one number at a time. \nYou only need to enter the first group of the table. ")
     print("You will enter the frequencies after the table is generated.")
-    print("When you reach the section for Arithmetic Average with deviation, the position refers to the row number\n\n")
+    print("When you reach the section for Arithmetic Average with deviation, the position refers to the row number")
+    print("Enter 0 when you finish to move to the next step.\n\n")
 
 
 if __name__ == '__main__':
-    arithmetic_averages_grouped_freq()
+    try:
+        arithmetic_averages_grouped_freq()
+    except KeyboardInterrupt:
+        exit()

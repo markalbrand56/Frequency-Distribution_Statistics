@@ -1,12 +1,12 @@
 # Main Scripts
-from FDS import frequency_distributions
-from AV_G import arithmetic_averages_grouped_freq
-from AV_S import arithmetic_averages_simple_freq
+from src.FDS import frequency_distributions
+from src.AV_G import arithmetic_averages_grouped_freq
+from src.AV_S import arithmetic_averages_simple_freq
 # Python modules
 import os
 from time import sleep
 # Extras
-from etc.colors import Colors
+from src.etc.colors import Colors
 
 
 def main():

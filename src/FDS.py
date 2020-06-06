@@ -1,27 +1,26 @@
 #!/usr/bin/env python3.8.3
 # _*_ coding: "utf-8" _*_
 
-from various_calculations.poss_groups import possible_groups  # Function for possible groups
-from various_calculations.limits import regular_limits
-from various_calculations.frequencies import simple_frequencies
-from various_calculations.frequencies import group_frequencies
-from various_calculations.class_centers_m import class_center
-from various_calculations.real_groups_m import get_real_groups
-from various_calculations.poss_groups import force_groups  # Forcing a group
-from etc.exiting import exiting
-from various_calculations.averages import average
+from src.various_calculations.poss_groups import possible_groups  # Function for possible groups
+from src.various_calculations.limits import regular_limits
+from src.various_calculations.frequencies import simple_frequencies
+from src.various_calculations.frequencies import group_frequencies
+from src.various_calculations.class_centers_m import class_center
+from src.various_calculations.real_groups_m import get_real_groups
+from src.various_calculations.poss_groups import force_groups  # Forcing a group
+from src.etc.exiting import exiting
+from src.various_calculations.averages import average
 # Working with decimals
-from various_calculations.decimals_limits_freqs import one_decimal_limits
-from various_calculations.decimals_limits_freqs import one_decimal_group_frequencies
-from various_calculations.comprobations import has_decimals
-from various_calculations.real_groups_m import decimal_real_groups
+from src.various_calculations.decimals_limits_freqs import one_decimal_limits
+from src.various_calculations.decimals_limits_freqs import one_decimal_group_frequencies
+from src.various_calculations.comprobations import has_decimals
+from src.various_calculations.real_groups_m import decimal_real_groups
 # Python Packages
 import time
 # Extras
-from etc.colors import Colors
+from src.etc.colors import Colors
 
 
-# TODO Give color to results
 def frequency_distributions():
     """
     'Frequency Distributions' is meant to create the tables of simple and grouped frequencies for a set of numbers.
@@ -84,8 +83,9 @@ def frequency_distributions():
         print("Average: ", data_average)
         print("-----------------------------------------------------------------")
         time.sleep(timer)
+        text_color.BLUE()
         simple_frequencies(data)  # this will sort data by how many times it appears in the data collection
-        print("\n-----------------------------------------------------------------\n")
+        print("-----------------------------------------------------------------\n")
 
         if p_group_sizes == 0:  # Exiting because the program can't do any more calculations
             text_color.RED()
@@ -110,7 +110,7 @@ def frequency_distributions():
                 exiting()  # Without a possible group size it cannot continue with the calculations
 
         else:
-            text_color.BLUE()
+            text_color.GREEN()
             time.sleep(timer)
             for i in range(len(p_group_sizes)):
                 time.sleep(timer)
@@ -182,7 +182,7 @@ def frequency_distributions():
             else:
                 real_groups = decimal_real_groups(f_limits)
                 results_real_g_freq = one_decimal_group_frequencies(real_groups, data)
-            text_color.GREEN()
+            text_color.BLUE()
             print("-----------------------------------------------------------------")
             print("Your real groups, and their frequencies are:\n")
             print("Real groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
@@ -195,7 +195,9 @@ def frequency_distributions():
                 time.sleep(timer_groups)
                 print(freq[0], "  |  ", center, "  |  ", freq[1], "   |   ",
                       acc_r_g_f)  # [0] holds the limits, [1] holds the frequency
-            print("---------------------------Accumulated frequency: ", acc_r_g_f)
+            print("-----------------------------------------------------------------")
+            text_color.GREEN()
+            print("Accumulated frequency: ", acc_r_g_f)
             text_color.RESET()
 
         exiting()
@@ -212,4 +214,4 @@ if __name__ == "__main__":
         frequency_distributions()
     except KeyboardInterrupt:
         print("\nExiting...\n")
-        exit
+        exit()

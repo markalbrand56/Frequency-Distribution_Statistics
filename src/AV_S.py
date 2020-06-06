@@ -1,11 +1,10 @@
 # Calculations
-from etc.exiting import exiting
+from src.etc.exiting import exiting
 # Extras
 from time import sleep
-from etc.colors import Colors
+from src.etc.colors import Colors
 
 
-# TODO Give color to results
 def arithmetic_averages_simple_freq():
     """
     Arithmetic Averages for simple frequencies is meant to be used when the table of simple frequencies is given,
@@ -41,7 +40,7 @@ def arithmetic_averages_simple_freq():
         if len(data) <= 1:
             text_color.RED()
             print(" \nEnter more than one number, please. Try again.")
-            print(" Exiting...")
+            exiting()
             text_color.RESET()
             break
 
