@@ -86,7 +86,6 @@ def frequency_distributions():
         time.sleep(timer)
         simple_frequencies(data)  # this will sort data by how many times it appears in the data collection
         print("\n-----------------------------------------------------------------\n")
-        text_color.RESET()
 
         if p_group_sizes == 0:  # Exiting because the program can't do any more calculations
             text_color.RED()
@@ -115,9 +114,9 @@ def frequency_distributions():
             time.sleep(timer)
             for i in range(len(p_group_sizes)):
                 time.sleep(timer)
-                print("\n", i + 1, ". Possible groups' width: {} ".format(p_group_sizes[i][0]),
+                print("{}. Possible groups' width: {} ".format((i + 1), p_group_sizes[i][0]),
                       "  This will give you {} groups".format(p_group_sizes[i][1]))
-        print("-----------------------------------------------------------------")
+        print("\n\n-----------------------------------------------------------------")
         text_color.RESET()
 
         if len(p_group_sizes) == 1:
@@ -150,7 +149,7 @@ def frequency_distributions():
         acc_g_f = 0  # Accumulated group's frequency
 
         time.sleep(timer)
-        text_color.GREEN()
+        text_color.BLUE()
         print("-----------------------------------------------------------------")
         print("Your groups, and their frequencies are:\n")
         print("Groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
@@ -161,7 +160,10 @@ def frequency_distributions():
             time.sleep(timer_groups)
             print(freq[0], "  |  ", center, "  |  ", freq[1], "   |   ",
                   acc_g_f)  # [0] holds the limits, [1] holds the frequency
-        print("---------------------------Accumulated frequency: ", acc_g_f)
+        print("-----------------------------------------------------------------")
+        text_color.GREEN()
+        print("Accumulated frequency: ", acc_g_f)
+
         text_color.RESET()
         if len(f_limits) == chosen_group_size:
             pass
@@ -202,7 +204,7 @@ def frequency_distributions():
 def Instructions_FDS():
     print("\n  INSTRUCTIONS:\nEnter one number at a time, and enter each instance of every number.")
     print("This program accepts numbers with up to 1 decimal position")
-    print("When you finish, enter '0' to move to the next step\n")
+    print("When you finish, enter '0' to move to the next step\n\n")
 
 
 if __name__ == "__main__":

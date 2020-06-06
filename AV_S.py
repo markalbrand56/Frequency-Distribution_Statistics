@@ -34,11 +34,15 @@ def arithmetic_averages_simple_freq():
                 else:
                     pass  # Negative numbers won't be added
             except ValueError:
+                text_color.RED()
                 print(" Enter a number please.")  # With this exception raised, the user can continue entering data
+                text_color.RESET()
         data = sorted(data)
         if len(data) <= 1:
+            text_color.RED()
             print(" \nEnter more than one number, please. Try again.")
             print(" Exiting...")
+            text_color.RESET()
             break
 
         data_frequencies = []
@@ -48,7 +52,9 @@ def arithmetic_averages_simple_freq():
                 frequency = (number, input_frequency)
                 data_frequencies.append(frequency)
             except ValueError:
+                text_color.RED()
                 print(" \nEnter a number, and try again ")
+                text_color.RESET()
                 exiting()
 
         for element in data_frequencies:
@@ -107,13 +113,15 @@ def arithmetic_averages_simple_freq():
         deviations_result = round(deviations_result, 2)
         print("\n  The result for the arithmetic average using deviation was: ", deviations_result)
 
+        exiting()
+
         main_loop = False
 
 
 def Instructions_AVS():
     print("\n  INSTRUCTIONS:")
-    print(" Enter one number at a time. Do NOT repeat numbers, their frequencies will be asked later")
-    print(" When you reach the section for Arithmetic Average with deviation, the position refers to the row number")
+    print("Enter one number at a time. Do NOT repeat numbers, their frequencies will be asked later")
+    print("When you reach the section for Arithmetic Average with deviation, the position refers to the row number\n\n")
 
 
 if __name__ == '__main__':

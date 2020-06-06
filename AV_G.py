@@ -111,6 +111,7 @@ def arithmetic_averages_grouped_freq():
     print("\n  The result of the arithmetic average using deviation is: {}".format(deviations_result))
     text_color.RESET()
 
+    exiting()
 
 def Instructions_AVG():
     print("\n  INSTRUCTIONS:")

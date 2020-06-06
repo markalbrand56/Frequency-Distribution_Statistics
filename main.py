@@ -10,6 +10,7 @@ from etc.colors import Colors
 
 
 def main():
+    os.system("cls")
     text_color = Colors()
     text_color.RED()
     print("\n------------ v0.4.0-alpha ------------\n")
@@ -29,7 +30,9 @@ def main():
             else:
                 input_loop = False
         except ValueError:
+            text_color.RED()
             print("Enter a valid number")
+            text_color.RESET()
 
     if decision == 1:
         cls()
@@ -68,4 +71,7 @@ def help_functions():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        exit()
