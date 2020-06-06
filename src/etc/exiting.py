@@ -1,7 +1,7 @@
 def exiting():
     import time
     from src.etc.colors import Colors
-    from src.main import main as main_app
+    from main import main as main_app
     text_color = Colors()
     while True:
         text_color.RED()
