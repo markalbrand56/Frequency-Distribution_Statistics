@@ -1,7 +1,13 @@
+#!/usr/bin/env python3.8.3
+# _*_ coding: "utf-8" _*_
+
+# Author: Mark Albrand
+# License: GNU General Public License v3.0
+
 # Main Scripts
-from src.FDS import frequency_distributions
-from src.AV_G import arithmetic_averages_grouped_freq
-from src.AV_S import arithmetic_averages_simple_freq
+from src.FD import frequency_distributions  # Main functionality of the project as a whole
+from src.AV_G import arithmetic_averages_grouped_freq  # Secondary functionality
+from src.AV_S import arithmetic_averages_simple_freq  # Secondary functionality
 # Python modules
 import os
 from time import sleep
@@ -10,22 +16,26 @@ from src.etc.colors import Colors
 
 
 def main():
-    os.system("cls")
+    cls()
     text_color = Colors()
+
     text_color.RED()
-    print("\n------------ v0.4.0-alpha ------------\n")
+    print("\n-------------- v0.4.0-alpha --------------\n")
+
     text_color.YELLOW()
     print("Choose an option:")
     print("1. Frequency Distributions")
     print("2. Arithmetic Averages for simple frequencies")
     print("3. Arithmetic Averages for grouped frequencies")
     print("4. Help")
+    print("5. EXIT")
     text_color.RESET()
+
     input_loop = True
     while input_loop:
         try:
             decision = int(input("---> "))
-            if decision > 4:
+            if decision > 5:
                 raise ValueError
             else:
                 input_loop = False
@@ -47,11 +57,16 @@ def main():
         help_functions()
         sleep(5)
         main()
+    elif decision == 5:
+        sleep(1)
+        exit()
+    else:
+        pass
 
 
-def cls():
+def cls():  # To clear the screen when entering a module.
     sleep(0.05)
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('cls' if os.name == 'nt' else 'clear')  # Also helps to show colors in windows terminals.
 
 
 def help_functions():
