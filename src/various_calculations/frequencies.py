@@ -1,7 +1,7 @@
-def Simple_frequencies(list):
+def simple_frequencies(data: list):
     import collections
     import time
-    counter = collections.Counter(list)  # Counts each appearance of each number. {(value, count), (value, count)...}
+    counter = collections.Counter(data)  # Counts each appearance of each number. {(value, count), (value, count)...}
 
     print("\nValue ==> Frequency ==> Accumulated")
     accumulated = 0  # Accumulated frequency
@@ -11,7 +11,7 @@ def Simple_frequencies(list):
         print("{}   |   {}   |   {}".format(key, value, accumulated))
 
 
-def Group_frequencies(limits, data):
+def group_frequencies(limits, data):
     limits = list(limits)
     data = list(data)
     lst_gr_freq = []  # Limits will be added aside with their frequencies.[((1,3),5), ((4,6), 7), ((7,9), 2)]
@@ -31,18 +31,18 @@ if __name__ == "__main__":
     testing_data = sorted(testing_data)
     testing_lst = [(1, 3), (4, 6), (7, 9), (10, 12), (13, 15), (16, 18), (19, 21), (22, 24), (25, 27)]
 
-    Simple_frequencies(testing_data)
+    simple_frequencies(testing_data)
     print(len(testing_data))
 
     print("\n")
 
-    results_gr_f = Group_frequencies(testing_lst, testing_data)
+    results_gr_f = group_frequencies(testing_lst, testing_data)
     for result in results_gr_f:
         print(result)
     print("\n\n")
 
     testing2 = [(0.5, 3.5), (3.5, 6.5), (6.5, 9.5), (9.5, 12.5), (12.5, 15.5), (15.5, 18.5), (18.5, 21.5), (21.5, 24.5),
                 (24.5, 27.5)]
-    results_gr_f2 = Group_frequencies(testing2, testing_data)
+    results_gr_f2 = group_frequencies(testing2, testing_data)
     for result in results_gr_f2:
         print(result)
