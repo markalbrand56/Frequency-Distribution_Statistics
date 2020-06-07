@@ -117,8 +117,8 @@ def Instructions_AVG():
     print("\n  INSTRUCTIONS:")
     print("Enter one number at a time. \nYou only need to enter the first group of the table. ")
     print("You will enter the frequencies after the table is generated.")
-    print("When you reach the section for Arithmetic Average with deviation, the position refers to the row number")
-    print("Enter 0 when you finish to move to the next step.\n\n")
+    print(
+        "When you reach the section for Arithmetic Average with deviation, the position refers to the row number.\n\n")
 
 
 if __name__ == '__main__':

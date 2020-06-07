@@ -119,8 +119,9 @@ def arithmetic_averages_simple_freq():
 
 def Instructions_AVS():
     print("\n  INSTRUCTIONS:")
-    print("Enter one number at a time. Do NOT repeat numbers, their frequencies will be asked later")
-    print("When you reach the section for Arithmetic Average with deviation, the position refers to the row number\n\n")
+    print("Enter one number at a time. Do NOT repeat numbers, their frequencies will be asked later.")
+    print("When you reach the section for Arithmetic Average with deviation, the position refers to the row number.")
+    print("Enter '0' when you finish to move to the next step.\n\n")
 
 
 if __name__ == '__main__':

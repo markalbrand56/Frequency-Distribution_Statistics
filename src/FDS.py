@@ -85,7 +85,7 @@ def frequency_distributions():
         time.sleep(timer)
         text_color.BLUE()
         simple_frequencies(data)  # this will sort data by how many times it appears in the data collection
-        print("-----------------------------------------------------------------\n")
+        print("\n\n-----------------------------------------------------------------\n")
 
         if p_group_sizes == 0:  # Exiting because the program can't do any more calculations
             text_color.RED()
@@ -116,7 +116,7 @@ def frequency_distributions():
                 time.sleep(timer)
                 print("{}. Possible groups' width: {} ".format((i + 1), p_group_sizes[i][0]),
                       "  This will give you {} groups".format(p_group_sizes[i][1]))
-        print("\n\n-----------------------------------------------------------------")
+        print("\n\n-----------------------------------------------------------------\n")
         text_color.RESET()
 
         if len(p_group_sizes) == 1:
@@ -160,7 +160,7 @@ def frequency_distributions():
             time.sleep(timer_groups)
             print(freq[0], "  |  ", center, "  |  ", freq[1], "   |   ",
                   acc_g_f)  # [0] holds the limits, [1] holds the frequency
-        print("-----------------------------------------------------------------")
+        print("-----------------------------------------------------------------\n")
         text_color.GREEN()
         print("Accumulated frequency: ", acc_g_f)
 
@@ -183,7 +183,7 @@ def frequency_distributions():
                 real_groups = decimal_real_groups(f_limits)
                 results_real_g_freq = one_decimal_group_frequencies(real_groups, data)
             text_color.BLUE()
-            print("-----------------------------------------------------------------")
+            print("\n-----------------------------------------------------------------")
             print("Your real groups, and their frequencies are:\n")
             print("Real groups  |  Class Center  |  Frequency  |  Accumulated Frequency")
             acc_r_g_f = 0
@@ -195,7 +195,7 @@ def frequency_distributions():
                 time.sleep(timer_groups)
                 print(freq[0], "  |  ", center, "  |  ", freq[1], "   |   ",
                       acc_r_g_f)  # [0] holds the limits, [1] holds the frequency
-            print("-----------------------------------------------------------------")
+            print("-----------------------------------------------------------------\n")
             text_color.GREEN()
             print("Accumulated frequency: ", acc_r_g_f)
             text_color.RESET()
