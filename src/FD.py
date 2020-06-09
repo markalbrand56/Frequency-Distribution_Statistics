@@ -1,7 +1,8 @@
 #!/usr/bin/env python3.8.3
 # _*_ coding: "utf-8" _*_
 
-from src.various_calculations.poss_groups import possible_groups  # Function for possible groups
+# Various calculations
+from src.various_calculations.poss_groups import possible_groups
 from src.various_calculations.limits import regular_limits
 from src.various_calculations.frequencies import simple_frequencies
 from src.various_calculations.frequencies import group_frequencies
@@ -122,8 +123,7 @@ def frequency_distributions():
         if len(p_group_sizes) == 1:
             chs_option = 0  # Chosen amount of groups. Assigns (number_of_groups, divisor).
         else:
-            chs_option = int(
-                input("  Choose an option for the groups' size: "))  # Options to choose the width of the groups
+            chs_option = int(input("  Choose an option for the groups' size: "))  # Options for the width of the groups
             chs_option -= 1  # Match list index
             if chs_option in range(0, len(p_group_sizes)):
                 pass
@@ -135,10 +135,12 @@ def frequency_distributions():
         chosen_group_size = p_group_sizes[chs_option][1]  # Variable for the amount of groups that should be crated.
         og_groups_width = int(p_group_sizes[chs_option][0])  # Variable for the untouched width
         gr_width = int(p_group_sizes[chs_option][0]) - 1  # This is the number that will be used to create the groups.
+
         text_color.GREEN()
         print("\nGroup's width: ", og_groups_width)  # Information for the user
         print("Amount of groups:  ", chosen_group_size, "\n")
         text_color.RESET()
+
         if verification == 0:  # No decimals
             f_limits = regular_limits(minimum=min_data, maximum=max_data, width=gr_width)  # returns list with limits.
             result_gr_f = group_frequencies(f_limits, data)
@@ -174,14 +176,15 @@ def frequency_distributions():
             print("  \nThe groups created were less than the group size you chose by",
                   int(chosen_group_size) - int(len(f_limits)))  # Not always an error
 
-        decison_rl_grps = input("  Do you want to show the real groups? y/n ")
-        if decison_rl_grps.upper() == "Y":
+        decision_real_groups = input("  Do you want to show the real groups? y/n ")
+        if decision_real_groups.upper() == "Y":
             if verification == 0:
                 real_groups = get_real_groups(f_limits)
                 results_real_g_freq = one_decimal_group_frequencies(real_groups, data)
             else:
                 real_groups = decimal_real_groups(f_limits)
                 results_real_g_freq = one_decimal_group_frequencies(real_groups, data)
+
             text_color.BLUE()
             print("\n-----------------------------------------------------------------")
             print("Your real groups, and their frequencies are:\n")

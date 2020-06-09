@@ -42,13 +42,13 @@ def arithmetic_averages_grouped_freq():
     else:
         pass
 
-    limits = get_other_groups(first_lower, first_upper, amount_groups)
+    groups = get_other_groups(first_lower, first_upper, amount_groups)
 
-    groups_frequencies = []
-    for limit in limits:
+    groups_frequencies = []  # Each group in a tuple with its frequency
+    for group in groups:
         try:
-            frequency = int(input("Enter the frequency for {} : ".format(limit)))
-            group_freq = (limit, frequency)
+            frequency = int(input("Enter the frequency for {} : ".format(group)))
+            group_freq = (group, frequency)
             groups_frequencies.append(group_freq)
         except ValueError:
             text_color.RED()
@@ -57,8 +57,8 @@ def arithmetic_averages_grouped_freq():
             exiting()
 
     class_centers = []
-    for limit in limits:
-        center = class_center(limit)
+    for group in groups:
+        center = class_center(group)
         class_centers.append(center)
     text_color.GREEN()
     a_average = arithmetic_average_groups(groups_frequencies, class_centers)
@@ -73,7 +73,7 @@ def arithmetic_averages_grouped_freq():
     while dev_loop:
         try:
             deviation_position = int(input("In what position do you want to set the center of the deviation? "))
-            if deviation_position > len(limits) or deviation_position < 0:
+            if deviation_position > len(groups) or deviation_position < 0:
                 raise ValueError
             deviation_position -= 1
             dev_loop = False
@@ -86,13 +86,13 @@ def arithmetic_averages_grouped_freq():
     for num in range(len(groups_frequencies)):
         value = groups_frequencies[num][1]  # frequency
         d = int(num - deviation_position)
-        deviation = (value, d)
+        deviation = (value, d)  # value and its relative position
         deviations.append(deviation)
 
-    deviations_subtotal = 0
+    deviations_subtotal = 0  # Sum of all frequencies * deviations
     for element in deviations:
-        f = element[0]
-        d = element[1]
+        f = element[0]  # frequency
+        d = element[1]  # deviation
         result = f * d
         deviations_subtotal += result
     text_color.BLUE()
