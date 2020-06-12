@@ -64,6 +64,8 @@ def arithmetic_averages_grouped_freq():
     a_average = arithmetic_average_groups(groups_frequencies, class_centers)
     print("  The arithmetic average is: {}".format(a_average))
     text_color.RESET()
+
+    # Deviation
     frequency_total = 0
     for element in groups_frequencies:
         freq = element[1]
@@ -117,8 +119,7 @@ def Instructions_AVG():
     print("\n  INSTRUCTIONS:")
     print("Enter one number at a time. \nYou only need to enter the first group of the table. ")
     print("You will enter the frequencies after the table is generated.")
-    print(
-        "When you reach the section for Arithmetic Average with deviation, the position refers to the row number.\n\n")
+    print("When you reach the section for Arithmetic Average with deviation, the position means the row number.\n\n")
 
 
 if __name__ == '__main__':
