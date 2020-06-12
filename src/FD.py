@@ -67,8 +67,17 @@ def frequency_distributions():
         min_data = min(data)
         i_range = round((max_data - min_data), 1)  # Range
         data_average = average(data, counter)
-        min_groups = int(input("\n  How many classes/groups do you at least need? "))
-        max_groups = int(input("  How many classes/groups is your max? "))
+        try:
+            min_groups = int(input("\n  How many classes/groups do you at least need? "))
+            max_groups = int(input("  How many classes/groups is your max? "))
+        except ValueError:
+            text_color.RED()
+            print("  Invalid values.")
+            print("  I assigned 8 as the minimum amount and 18 as the maximum")
+            min_groups = 8  # Default values
+            max_groups = 18  # Default values
+            text_color.RESET()
+
         max_groups += 1  # This makes the max number of intervals actually be considered in the range.
         p_group_sizes = possible_groups(i_range, min_groups, max_groups)  # Possible group sizes in list of tuples (w,#)
 
@@ -96,7 +105,7 @@ def frequency_distributions():
             if forcing == "y" or forcing == "Y":
                 try:
                     forced_width = int(input("\nEnter the width you want to use: "))
-                    if forced_width >= 0:
+                    if forced_width > 1:
                         p_group_sizes = force_groups(i_range, forced_width)
                     else:
                         text_color.RED()
@@ -208,8 +217,8 @@ def frequency_distributions():
 
 def Instructions_FDS():
     print("\n  INSTRUCTIONS:\nEnter one number at a time, and enter each instance of every number.")
-    print("This program accepts numbers with up to 1 decimal position")
-    print("When you finish, enter '0' to move to the next step\n\n")
+    print("This program accepts numbers with up to 1 decimal position.")
+    print("When you finish, enter '0' to move to the next step.\n\n")
 
 
 if __name__ == "__main__":
