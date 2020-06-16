@@ -2,13 +2,13 @@
 # _*_ coding: "utf-8" _*_
 
 # Various calculations
-from src.various_calculations.poss_groups import possible_groups
+from src.various_calculations.possible_groups import possible_groups
 from src.various_calculations.limits import regular_limits
 from src.various_calculations.frequencies import simple_frequencies
 from src.various_calculations.frequencies import group_frequencies
-from src.various_calculations.class_centers_m import class_center
-from src.various_calculations.real_groups_m import get_real_groups
-from src.various_calculations.poss_groups import force_groups  # Forcing a group
+from src.various_calculations.class_centers import class_center
+from src.various_calculations.real_groups import get_real_groups
+from src.various_calculations.possible_groups import force_groups  # Forcing a group
 from src.etc.exiting import exiting
 from src.various_calculations.averages import average
 from src.various_calculations.simple_frequencies_input import input_simple_frequencies
@@ -16,7 +16,7 @@ from src.various_calculations.simple_frequencies_input import input_simple_frequ
 from src.various_calculations.decimals_limits_freqs import one_decimal_limits
 from src.various_calculations.decimals_limits_freqs import one_decimal_group_frequencies
 from src.various_calculations.comprobations import has_decimals
-from src.various_calculations.real_groups_m import decimal_real_groups
+from src.various_calculations.real_groups import decimal_real_groups
 # Python Packages
 import time
 # Extras

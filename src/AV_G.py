@@ -1,7 +1,7 @@
 # Calculations
 from src.various_calculations.get_rest_groups import get_other_groups
-from src.various_calculations.class_centers_m import class_center
-from src.various_calculations.arithmetic_avrg import arithmetic_average_groups
+from src.various_calculations.class_centers import class_center
+from src.various_calculations.averages import arithmetic_average_groups
 
 # Extras
 from time import sleep
