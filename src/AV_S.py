@@ -48,8 +48,13 @@ def arithmetic_averages_simple_freq():
         for number in data:
             try:
                 input_frequency = int(input("What is the frequency of: {} ? ".format(number)))
+                if input_frequency < 0:
+                    input_frequency *= -1  # If a negative number is entered, the frequency will be its opposite.
+                else:
+                    pass
                 frequency = (number, input_frequency)
                 data_frequencies.append(frequency)
+
             except ValueError:
                 text_color.RED()
                 print(" \nEnter a number, and try again ")
@@ -72,6 +77,7 @@ def arithmetic_averages_simple_freq():
         text_color.GREEN()
         print("  The arithmetic average is: {}".format(arithmetic_average))
         text_color.RESET()
+
         dev_loop = True  # Deviation loop
         while dev_loop:
             try:

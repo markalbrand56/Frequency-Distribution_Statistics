@@ -45,14 +45,20 @@ def arithmetic_averages_grouped_freq():
     else:
         pass
 
+    # Generating the rest of the table
     groups = get_other_groups(first_lower, first_upper, amount_groups)
 
     groups_frequencies = []  # Each group in a tuple with its frequency
     for group in groups:
         try:
             frequency = int(input("Enter the frequency for {} : ".format(group)))
+            if frequency < 0:
+                frequency *= -1  # If a negative number is entered, the frequency will be its opposite.
+            else:
+                pass
             group_freq = (group, frequency)
             groups_frequencies.append(group_freq)
+
         except ValueError:
             text_color.RED()
             print("Enter a number, please")
