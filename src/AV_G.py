@@ -11,7 +11,7 @@ from src.etc.exiting import exiting
 
 def arithmetic_averages_grouped_freq():
     """
-      'Arithmetic Averages for grouped frequencies' is meant to be used when a table of grouped frequencies is given,
+      'Arithmetic Averages for Grouped Frequencies' is meant to be used when a table of grouped frequencies is given,
     but not the data itself.
       This means that the user should have: Groups and the Frequency for each group.
       The program will calculate class centers, and the arithmetic average of the table (using the standard formula and
@@ -30,10 +30,13 @@ def arithmetic_averages_grouped_freq():
             first_upper = int(input("Whats the upper limit of the first group? "))
             width = first_upper - first_lower + 1
             amount_groups = int(input("How many groups does the table have? "))
-            input_loop = False
+            if first_upper < 0 or first_lower < 0 or amount_groups < 0:
+                raise ValueError
+            else:
+                input_loop = False
         except ValueError:
             text_color.RED()
-            print("Enter a number, please")
+            print("Enter valid numbers, please")
             text_color.RESET()
 
     if amount_groups == 0 or amount_groups == 1:

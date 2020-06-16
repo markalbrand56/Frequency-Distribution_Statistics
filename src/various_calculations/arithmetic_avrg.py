@@ -1,11 +1,11 @@
 def arithmetic_average_groups(groups, centers):
     accumulated_freq = 0
-    for i in range(len(groups)):
-        freq = groups[i][1]
+    for number in range(len(groups)):
+        freq = groups[number][1]
         accumulated_freq += freq
     subtotals = []
-    for i in range(len(groups)):
-        subtotal = groups[i][1] * centers[i]
+    for number in range(len(groups)):
+        subtotal = groups[number][1] * centers[number]
         subtotals.append(subtotal)
     total = 0
     for subttl in subtotals:
