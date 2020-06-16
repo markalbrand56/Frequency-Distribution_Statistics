@@ -11,6 +11,7 @@ from src.various_calculations.real_groups_m import get_real_groups
 from src.various_calculations.poss_groups import force_groups  # Forcing a group
 from src.etc.exiting import exiting
 from src.various_calculations.averages import average
+from src.various_calculations.simple_frequencies_input import input_simple_frequencies
 # Working with decimals
 from src.various_calculations.decimals_limits_freqs import one_decimal_limits
 from src.various_calculations.decimals_limits_freqs import one_decimal_group_frequencies
@@ -32,35 +33,20 @@ def frequency_distributions():
     This program also calculates real groups.
     """
 
-    data = []  # This holds every raw number introduced by the user
     counter = 0  # Counter for how many numbers the user inputs
     timer = 0.1  # For the user to see each thing at a time. Data focused
     timer_groups = 0.05  # Timer for the rows of tables. Faster than data
     text_color = Colors()
+
     Instructions_FDS()
 
     time.sleep(1)
     main_loop = True  # To end the program when the user is ready.
     while main_loop:
-        while True:  # To keep receiving data from the user
-            try:
-                num = float(input("  Enter a number: "))
-                if num == 0.0:
-                    break  # 0 is for finishing the input process
-                elif num > 0:
-                    counter += 1
-                    data.append(num)
-                else:
-                    pass  # Negative numbers won't be added
-            except ValueError:
-                text_color.RED()
-                print(" Enter a number please.")  # With this exception raised, the user can continue entering data
-                text_color.RESET()
-        data = sorted(data)
-        if len(data) <= 1:
-            print("\nEnter more than one number, please. Try again.")
-            print(" Exiting...")
-            break
+        data = input_simple_frequencies()  # This holds every raw number introduced by the user
+
+        for number in data:
+            counter += 1
 
         verification = has_decimals(data)
         max_data = max(data)
