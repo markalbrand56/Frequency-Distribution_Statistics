@@ -1,7 +1,7 @@
 # Calculations
 from src.various_calculations.get_rest_groups import get_other_groups
-from src.various_calculations.class_centers_m import class_center
-from src.various_calculations.arithmetic_avrg import arithmetic_average_groups
+from src.various_calculations.class_centers import class_center
+from src.various_calculations.averages import arithmetic_average_groups
 
 # Extras
 from time import sleep
@@ -11,7 +11,7 @@ from src.etc.exiting import exiting
 
 def arithmetic_averages_grouped_freq():
     """
-      'Arithmetic Averages for grouped frequencies' is meant to be used when a table of grouped frequencies is given,
+      'Arithmetic Averages for Grouped Frequencies' is meant to be used when a table of grouped frequencies is given,
     but not the data itself.
       This means that the user should have: Groups and the Frequency for each group.
       The program will calculate class centers, and the arithmetic average of the table (using the standard formula and
@@ -30,10 +30,13 @@ def arithmetic_averages_grouped_freq():
             first_upper = int(input("Whats the upper limit of the first group? "))
             width = first_upper - first_lower + 1
             amount_groups = int(input("How many groups does the table have? "))
-            input_loop = False
+            if first_upper < 0 or first_lower < 0 or amount_groups < 0:
+                raise ValueError
+            else:
+                input_loop = False
         except ValueError:
             text_color.RED()
-            print("Enter a number, please")
+            print("Enter valid numbers, please")
             text_color.RESET()
 
     if amount_groups == 0 or amount_groups == 1:
@@ -42,14 +45,20 @@ def arithmetic_averages_grouped_freq():
     else:
         pass
 
+    # Generating the rest of the table
     groups = get_other_groups(first_lower, first_upper, amount_groups)
 
     groups_frequencies = []  # Each group in a tuple with its frequency
     for group in groups:
         try:
             frequency = int(input("Enter the frequency for {} : ".format(group)))
+            if frequency < 0:
+                frequency *= -1  # If a negative number is entered, the frequency will be its opposite.
+            else:
+                pass
             group_freq = (group, frequency)
             groups_frequencies.append(group_freq)
+
         except ValueError:
             text_color.RED()
             print("Enter a number, please")
@@ -64,6 +73,8 @@ def arithmetic_averages_grouped_freq():
     a_average = arithmetic_average_groups(groups_frequencies, class_centers)
     print("  The arithmetic average is: {}".format(a_average))
     text_color.RESET()
+
+    # Deviation
     frequency_total = 0
     for element in groups_frequencies:
         freq = element[1]
@@ -117,8 +128,7 @@ def Instructions_AVG():
     print("\n  INSTRUCTIONS:")
     print("Enter one number at a time. \nYou only need to enter the first group of the table. ")
     print("You will enter the frequencies after the table is generated.")
-    print(
-        "When you reach the section for Arithmetic Average with deviation, the position refers to the row number.\n\n")
+    print("When you reach the section for Arithmetic Average with deviation, the position means the row number.\n\n")
 
 
 if __name__ == '__main__':
