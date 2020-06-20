@@ -23,6 +23,7 @@ def arithmetic_averages_simple_freq():
 
     while main_loop:
         data = input_simple_frequencies()
+        data = sorted(data)
         data_frequencies = []
         for number in data:
             try:
