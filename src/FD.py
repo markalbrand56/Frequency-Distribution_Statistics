@@ -2,20 +2,21 @@
 # _*_ coding: "utf-8" _*_
 
 # Various calculations
-from src.various_calculations.poss_groups import possible_groups
+from src.various_calculations.possible_groups import possible_groups
 from src.various_calculations.limits import regular_limits
 from src.various_calculations.frequencies import simple_frequencies
 from src.various_calculations.frequencies import group_frequencies
-from src.various_calculations.class_centers_m import class_center
-from src.various_calculations.real_groups_m import get_real_groups
-from src.various_calculations.poss_groups import force_groups  # Forcing a group
+from src.various_calculations.class_centers import class_center
+from src.various_calculations.real_groups import get_real_groups
+from src.various_calculations.possible_groups import force_groups  # Forcing a group
 from src.etc.exiting import exiting
 from src.various_calculations.averages import average
+from src.various_calculations.simple_frequencies_input import input_simple_frequencies
 # Working with decimals
 from src.various_calculations.decimals_limits_freqs import one_decimal_limits
 from src.various_calculations.decimals_limits_freqs import one_decimal_group_frequencies
 from src.various_calculations.comprobations import has_decimals
-from src.various_calculations.real_groups_m import decimal_real_groups
+from src.various_calculations.real_groups import decimal_real_groups
 # Python Packages
 import time
 # Extras
@@ -32,43 +33,37 @@ def frequency_distributions():
     This program also calculates real groups.
     """
 
-    data = []  # This holds every raw number introduced by the user
     counter = 0  # Counter for how many numbers the user inputs
     timer = 0.1  # For the user to see each thing at a time. Data focused
     timer_groups = 0.05  # Timer for the rows of tables. Faster than data
     text_color = Colors()
+
     Instructions_FDS()
 
     time.sleep(1)
     main_loop = True  # To end the program when the user is ready.
     while main_loop:
-        while True:  # To keep receiving data from the user
-            try:
-                num = float(input("  Enter a number: "))
-                if num == 0.0:
-                    break  # 0 is for finishing the input process
-                elif num > 0:
-                    counter += 1
-                    data.append(num)
-                else:
-                    pass  # Negative numbers won't be added
-            except ValueError:
-                text_color.RED()
-                print(" Enter a number please.")  # With this exception raised, the user can continue entering data
-                text_color.RESET()
-        data = sorted(data)
-        if len(data) <= 1:
-            print("\nEnter more than one number, please. Try again.")
-            print(" Exiting...")
-            break
+        data = input_simple_frequencies()  # This holds every raw number introduced by the user
+
+        for number in data:
+            counter += 1
 
         verification = has_decimals(data)
         max_data = max(data)
         min_data = min(data)
         i_range = round((max_data - min_data), 1)  # Range
         data_average = average(data, counter)
-        min_groups = int(input("\n  How many classes/groups do you at least need? "))
-        max_groups = int(input("  How many classes/groups is your max? "))
+        try:
+            min_groups = int(input("\n  How many classes/groups do you at least need? "))
+            max_groups = int(input("  How many classes/groups is your max? "))
+        except ValueError:
+            text_color.RED()
+            print("  Invalid values.")
+            print("  I assigned 8 as the minimum amount and 18 as the maximum")
+            min_groups = 8  # Default values
+            max_groups = 18  # Default values
+            text_color.RESET()
+
         max_groups += 1  # This makes the max number of intervals actually be considered in the range.
         p_group_sizes = possible_groups(i_range, min_groups, max_groups)  # Possible group sizes in list of tuples (w,#)
 
@@ -96,7 +91,7 @@ def frequency_distributions():
             if forcing == "y" or forcing == "Y":
                 try:
                     forced_width = int(input("\nEnter the width you want to use: "))
-                    if forced_width >= 0:
+                    if forced_width > 1:
                         p_group_sizes = force_groups(i_range, forced_width)
                     else:
                         text_color.RED()
@@ -208,8 +203,8 @@ def frequency_distributions():
 
 def Instructions_FDS():
     print("\n  INSTRUCTIONS:\nEnter one number at a time, and enter each instance of every number.")
-    print("This program accepts numbers with up to 1 decimal position")
-    print("When you finish, enter '0' to move to the next step\n\n")
+    print("This program accepts numbers with up to 1 decimal position.")
+    print("When you finish, enter '0' to move to the next step.\n\n")
 
 
 if __name__ == "__main__":

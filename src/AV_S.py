@@ -1,6 +1,7 @@
 # Calculations
-from src.etc.exiting import exiting
+from src.various_calculations.simple_frequencies_input import input_simple_frequencies
 # Extras
+from src.etc.exiting import exiting
 from time import sleep
 from src.etc.colors import Colors
 
@@ -12,7 +13,7 @@ def arithmetic_averages_simple_freq():
     This means that the user should also have every frequency for each number.
     The program will calculate class centers, and the arithmetic average of the table (using the formula and deviation)
     """
-    data = []
+    # data = []
     data_counter = 0
     main_loop = True
     timer_tables = 0.05
@@ -21,35 +22,19 @@ def arithmetic_averages_simple_freq():
     Instructions_AVS()
 
     while main_loop:
-        while True:  # To keep receiving data from the user
-            try:
-                num = float(input("  Enter a number: "))
-                if num == 0.0:
-                    break  # 0 is for finishing the input process
-                elif num in data:
-                    pass  # The numbers of the table should be given, not each value
-                elif num > 0:
-                    data.append(num)
-                else:
-                    pass  # Negative numbers won't be added
-            except ValueError:
-                text_color.RED()
-                print(" Enter a number please.")  # With this exception raised, the user can continue entering data
-                text_color.RESET()
+        data = input_simple_frequencies()
         data = sorted(data)
-        if len(data) <= 1:
-            text_color.RED()
-            print(" \nEnter more than one number, please. Try again.")
-            exiting()
-            text_color.RESET()
-            break
-
         data_frequencies = []
         for number in data:
             try:
                 input_frequency = int(input("What is the frequency of: {} ? ".format(number)))
+                if input_frequency < 0:
+                    input_frequency *= -1  # If a negative number is entered, the frequency will be its opposite.
+                else:
+                    pass
                 frequency = (number, input_frequency)
                 data_frequencies.append(frequency)
+
             except ValueError:
                 text_color.RED()
                 print(" \nEnter a number, and try again ")
@@ -72,6 +57,7 @@ def arithmetic_averages_simple_freq():
         text_color.GREEN()
         print("  The arithmetic average is: {}".format(arithmetic_average))
         text_color.RESET()
+
         dev_loop = True  # Deviation loop
         while dev_loop:
             try:
