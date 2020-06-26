@@ -1,3 +1,5 @@
+# This branch
+The GUI branch, which you are currently viewing, is were I'll be doing my testing with different GUI frameworks for the program. 
 # Frequency-Distribution_Statistics
 This is a tool with the goal to help students with Statistics problems of the topic "Frequency Distributions", and its sub-topics like "Grouped Frequency Distributions".
 
