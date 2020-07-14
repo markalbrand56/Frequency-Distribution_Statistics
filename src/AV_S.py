@@ -22,7 +22,7 @@ def arithmetic_averages_simple_freq():
     Instructions_AVS()
 
     while main_loop:
-        data = input_simple_frequencies()
+        data = input_simple_frequencies(2)
         data_frequencies = []
         for number in data:
             try:
@@ -100,6 +100,7 @@ def arithmetic_averages_simple_freq():
         exiting()
 
         main_loop = False
+        # TODO Median calculation
 
 
 def Instructions_AVS():

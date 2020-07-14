@@ -1,4 +1,6 @@
-def input_simple_frequencies():
+def input_simple_frequencies(mode: int):
+    # mode 1 = Each occurrence of the number
+    # mode 2 = Table mode. 1 occurrence per value
     from src.etc.colors import Colors
     from src.etc.exiting import exiting
 
@@ -9,7 +11,7 @@ def input_simple_frequencies():
             num = float(input("  Enter a number: "))
             if num == 0.0:
                 break  # 0 is for finishing the input process
-            elif num in data:
+            elif num in data and mode == 2:
                 pass  # The numbers of the table should be given, not each value
             elif num > 0:
                 data.append(num)

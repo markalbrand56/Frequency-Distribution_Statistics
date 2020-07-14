@@ -43,7 +43,7 @@ def frequency_distributions():
     time.sleep(1)
     main_loop = True  # To end the program when the user is ready.
     while main_loop:
-        data = input_simple_frequencies()  # This holds every raw number introduced by the user
+        data = input_simple_frequencies(1)  # This holds every raw number introduced by the user
 
         for number in data:
             counter += 1
@@ -199,6 +199,8 @@ def frequency_distributions():
             text_color.RESET()
 
         exiting()
+
+        # TODO Median calculation
 
 
 def Instructions_FDS():
