@@ -27,5 +27,5 @@ def input_simple_frequencies(mode: int):
         print(" \nEnter more than one number, please. Try again.")
         exiting()
         text_color.RESET()
-
+    data = sorted(data)
     return data
