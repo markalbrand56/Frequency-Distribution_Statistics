@@ -97,10 +97,12 @@ def arithmetic_averages_simple_freq():
         deviations_result = round(deviations_result, 2)
         print("\n  The result for the arithmetic average using deviation was: ", deviations_result)
 
+        # TODO Median calculation
+        median_fa = (cumulative_data + 1) / 2
+
         exiting()
 
         main_loop = False
-        # TODO Median calculation
 
 
 def Instructions_AVS():
