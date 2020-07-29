@@ -1,7 +1,7 @@
 def average(data, count):
     average_v = 0
     for number in data:
-        average_v = average_v + int(number)
+        average_v = average_v + float(number)
 
     result = round((average_v / count), 4)
     return result

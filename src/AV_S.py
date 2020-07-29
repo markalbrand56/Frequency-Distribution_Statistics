@@ -22,8 +22,7 @@ def arithmetic_averages_simple_freq():
     Instructions_AVS()
 
     while main_loop:
-        data = input_simple_frequencies()
-        data = sorted(data)
+        data = input_simple_frequencies(2)
         data_frequencies = []
         for number in data:
             try:
@@ -97,6 +96,9 @@ def arithmetic_averages_simple_freq():
         deviations_result = data_frequencies[deviation_position][0] + (deviations_subtotal / data_counter)
         deviations_result = round(deviations_result, 2)
         print("\n  The result for the arithmetic average using deviation was: ", deviations_result)
+
+        # TODO Median calculation
+        median_fa = (cumulative_data + 1) / 2
 
         exiting()
 

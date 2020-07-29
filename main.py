@@ -20,7 +20,7 @@ def main():
     text_color = Colors()
 
     text_color.RED()
-    print("\n-------------- v0.4.1-alpha --------------\n")
+    print("\n-------------- v0.4.2 --------------\n")
 
     text_color.YELLOW()
     print("Choose an option:")
