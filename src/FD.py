@@ -43,7 +43,7 @@ def frequency_distributions():
     time.sleep(1)
     main_loop = True  # To end the program when the user is ready.
     while main_loop:
-        data = input_simple_frequencies()  # This holds every raw number introduced by the user
+        data = input_simple_frequencies(1)  # This holds every raw number introduced by the user
 
         for number in data:
             counter += 1
@@ -53,19 +53,6 @@ def frequency_distributions():
         min_data = min(data)
         i_range = round((max_data - min_data), 1)  # Range
         data_average = average(data, counter)
-        try:
-            min_groups = int(input("\n  How many classes/groups do you at least need? "))
-            max_groups = int(input("  How many classes/groups is your max? "))
-        except ValueError:
-            text_color.RED()
-            print("  Invalid values.")
-            print("  I assigned 8 as the minimum amount and 18 as the maximum")
-            min_groups = 8  # Default values
-            max_groups = 18  # Default values
-            text_color.RESET()
-
-        max_groups += 1  # This makes the max number of intervals actually be considered in the range.
-        p_group_sizes = possible_groups(i_range, min_groups, max_groups)  # Possible group sizes in list of tuples (w,#)
 
         text_color.GREEN()
         print("\n\n\n\n-----------------------------------------------------------------")
@@ -82,6 +69,25 @@ def frequency_distributions():
         text_color.BLUE()
         simple_frequencies(data)  # this will sort data by how many times it appears in the data collection
         print("\n\n-----------------------------------------------------------------\n")
+
+        group_frequencies_decision = input("Do you want to calculate grouped frequencies for this set? y/n ")
+
+        if group_frequencies_decision.lower() == 'y':
+            try:
+                min_groups = int(input("\n  How many classes/groups do you at least need? "))
+                max_groups = int(input("  How many classes/groups is your max? "))
+            except ValueError:
+                text_color.RED()
+                print("  Invalid values.")
+                print("  I assigned 8 as the minimum amount and 18 as the maximum")
+                min_groups = 8  # Default values
+                max_groups = 18  # Default values
+                text_color.RESET()
+        else:
+            exiting()
+
+        max_groups += 1  # This makes the max number of intervals actually be considered in the range.
+        p_group_sizes = possible_groups(i_range, min_groups, max_groups)  # Possible group sizes in list of tuples (w,#)
 
         if p_group_sizes == 0:  # Exiting because the program can't do any more calculations
             text_color.RED()
@@ -199,6 +205,8 @@ def frequency_distributions():
             text_color.RESET()
 
         exiting()
+
+        # TODO Median calculation
 
 
 def Instructions_FDS():
